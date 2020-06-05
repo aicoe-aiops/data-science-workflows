@@ -1,41 +1,41 @@
 # Automating notebooks A-Z
 
-This repo is being automated. This document outlines principles on which this specific automation is based on and hopes to serve as a guide for future, similar use cases.
+This repo is being automated. This document outlines the principles on which this specific automation is based and hopes to serve as a guide for future, similar use cases.
 
 ## Reasoning
 
-The main purpose of this repository is to provide and document analysis process for a specific use case. It does so via analysis notebooks which operate over a continuous stream of data. To receive a fresh results it is required that the notebooks are rerun every time new data becomes available. This fact alone presents a great opportunity for automation. And since the analysis is already broken into Jupyter notebooks, where each specific notebook has a distict role in the process, it advocates for automation even more.
+The main purpose of this repository is to provide and document the analysis process for a specific use case. It does so via analysis notebooks which operate over a continuous stream of data. To receive a fresh results it is required that the notebooks are rerun every time new data becomes available. This fact alone presents a great opportunity for automation. And since the analysis is already broken into Jupyter notebooks, where each specific notebook has a distinct role in the process, it is even more well suited for automation.
 
 ## Notebooks
 
-Notebooks are structured in a way when each is expected to perform a specific distinct function. As a byproduct this also defines the flow of tasks, a clear path which the analyst, user or the automation is expected to take. We consider as an anti-pattern a practise of cross-linking notebooks from the middle of another notebook. Notebooks have to be executable as a whole, without interruption, with the only exception of being dependant on another. In that case, once the prerequisite notebooks are ran, the notebook, again, has to be executable as a whole. In other words the notebook dependencies has to be resolved before the notebook execution starts.
+The notebooks are structured in such a way that each is expected to perform a specific and distinct function. As a byproduct, this also defines the flow of tasks, a clear path which the analyst, user or the automation is expected to follow. We consider as an anti-pattern the practise of cross-linking notebooks from the middle of another notebook. Notebooks have to be executable as a whole, without interruption, with the only exception being where one is dependant on another. In that case, once the prerequisite notebooks are run, the notebook, again, has to be executable as a whole. In other words, the notebook dependencies have to be resolved before the notebook execution starts.
 
 ### Folder strucuture
 
-For organization purposes we broke the `notebooks` folder in this repo into 3 different folders. This organization doesn't effect the automation in any way. It's present only of the purposes of developer and analyst orientation in the repo and making the notebook flow more obvious.
+For organization purposes we broke the `notebooks` folder in this repo into 3 different folders. This organization doesn't effect the automation in any way. It's present only for the purposes of developer and analyst orientation in the repo and making the notebook flow more obvious.
 
-- `01_collect_data` - Purpose of notebooks in this folder is to gradually prepare the datasets which are required for the analysis. These notebooks respects a common runtime layout, an API if you will, that defines where to store data, what data should be downloaded under what circumstances. Especially, when a notebook is run in automation, we don't want to process all the historical data again, we prefer to process only the incremental addition to the dataset and reuse the rest of the dataset chunks from previous runs. On the other hand, when the notebooks are run in a standalone environment for exploration purposes - like in a JupyterHub for example, we want the notebooks to be usable as well. And we can't expect the data scientist or any other third party to have access to our preprocessed data. In such cases we want to retain the ability to process the dataset as a whole.
-- `02_analyses` - Notebooks in this folder are meant to analyse one or more datasets and provide some findings. Here, the actual results of the data scientist's works are documented and presented. Each notebook in this folder can be run separately and doesn't depend on any other notebook here. In automation we expect all notebooks in this folder to be run in paralel and independently.
+- `01_collect_data` - The purpose of notebooks in this folder is to gradually prepare the datasets which are required for the analysis. These notebooks respects a common runtime layout, an API if you will, that defines where to store data, what data should be downloaded and under what circumstances. Especially, when a notebook is run in automation, we don't want to process all the historical data again, we prefer to process only the incremental addition to the dataset and reuse the rest of the dataset chunks from previous runs. On the other hand, when the notebooks are run in a standalone environment for exploration purposes - like in a JupyterHub for example, we want the notebooks to be usable as well. And we can't expect the data scientist or any other third party to have access to our preprocessed data. In such cases we want to retain the ability to process the dataset as a whole.
+- `02_analyses` - Notebooks in this folder are meant to analyse one or more datasets and provide some findings. Here, the actual results of the data scientist's works are documented and presented. Each notebook in this folder can be run separately and doesn't depend on any other notebook here. In automation we expect all notebooks in this folder to be run in parallel and independently.
 - `experimental` - Notebooks that are not expected to be executed during the automated runs. They are left here for experimentation and analyst curiosity.
 
 ### Data exchange protocol
 
-Let's imagine a scenario: A data analysts, working in JupyterHub opens a notebook. He works on that notebooks and wants to store the results, his findings, in the JupyterHub lab instance. He does that because later he may want to reuse these findings in another notebook. Once he opens this hypothetical second notebook, he expects he can load the data here by using the very same path he used before to store it. This is a very common way of exchanging data when creating analysis. However, it creates a dependency between notebooks that has to be respected.
+Let's imagine a scenario: A data analysts, working in JupyterHub opens a notebook. He works on that notebook and wants to store the results in the JupyterHub instance. He does that because later he may want to reuse these findings in another notebook. Once he opens this hypothetical second notebook, he expects he can load the data here by using the very same path he used before to store it. This is a common way of exchanging data when creating analysis. However, it creates a dependency between notebooks that has to be respected.
 
-Now let's say we want to replicate the very same scenario in automation. The trouble is that in automation each notebook is executed as a separate container. And that requires us to use a different approach - it can be either a remote storage, a shared volume or any other imaginable way. There are many. We chose to mount a shared volume to all the containers, since it's the most simplistic approach that behaves the same as a local storage would.
+Now let's say we want to replicate the very same scenario in automation. The trouble is that in automation each notebook is executed as a separate container. And that requires use to use a different approach - it can be either a remote storage, a shared volume or any other imaginable solution. There are many. We chose to mount a shared volume to all the containers since it's the most simplistic approach that behaves the same as local storage would.
 
-Our goal is to make this work the same no matter if the very same notebook is being opened in JupyterHub or run as a container. To do so, we need to enforce basic rules to make it happen. We use this pattern:
+Our goal is to make this process work the exact same way regardless of if the notebook is opened in JupyterHub or run as a container. To do so, we need to enforce some basic rules to make it happen. We use the following pattern:
 
-Each notebook dealing with locally stored data is expected to check the `LOCAL_DATA_PATH` environment variable. This path is mandatory to be used as a base path for any local data storage. If this variable is not set in the environment, the notebook is expected to use `data` folder in the repository root (specified as a relative path to that notebook working directory). In automation the `LOCAL_DATA_PATH` matches a mount point of a shared volume.
+Each notebook dealing with locally stored data is expected to check the `LOCAL_DATA_PATH` environment variable. This is a mandatory path used as a base path for any local data storage. If this variable is not set in the environment, the notebook is expected to use the `data` folder in the repository root (specified as a relative path to that notebook's working directory). In automation the `LOCAL_DATA_PATH` matches a mount point of a shared volume.
 
-This ensures a common patter is maintained across all notebooks that would like to access local data. For example, a notebook accessing local data under `f'{LOCAL_DATA_PATH}/subfolder/dataset.csv'` results in:
+This ensures a common pattern is maintained across all notebooks that would like to access local data. For example, a notebook accessing local data under `f'{LOCAL_DATA_PATH}/subfolder/dataset.csv'` results in:
 
 1. When executed in JupyterHub, this resolves to `data/subfolder/dataset.csv`
-2. In automation environment this translates to `/shared_folder_mount_point/subfolder/dataset.csv`
+2. In an automation environment this translates to `/shared_folder_mount_point/subfolder/dataset.csv`
 
 ### Automation specific behavior
 
-There are places in the notebook, where we want to differentiate the behavior, based on the environment in which the notebook is being executed. For instance, this applies to publishing the analysis results. We want to be able to execute all the notebook's cells in JupyterHub but we may not want to touch the data we publish to consumers. Or we want to collect all the dataset from scratch in JupyterHub while in automation we want to reuse our previously populated dataset chunks...
+There are places in the notebook, where we want to differentiate the behavior, based on the environment in which the notebook is being executed. For instance, when it comes to publishing the analysis results. We want to be able to execute all the notebook's cells in JupyterHub but we may not want to touch the data we publish to consumers. Or we may want to collect all the datasets from scratch in JupyterHub, while in automation we want to reuse our previously populated dataset chunks.
 
 To achieve this we introduce a flag, an environment variable `RUN_IN_AUTOMATION` which is present in the automated environment only:
 
@@ -48,7 +48,7 @@ else:
     # Run in JupyterHub
 ```
 
-We also introduce a couple of utility functions, that helps to decide (again, based on the execution environment) what range of data we're working with. See `src/utils.py` for details. These functions allows us to use the same code with different results based on the environment, eg:
+We also introduce a couple of utility functions that help to decide (again, based on the execution environment) what range of data we're working with. See `src/utils.py` for details. These functions allows us to use the same code with different results based on the environment, eg:
 
 ```python
 # in Automation
@@ -59,17 +59,17 @@ get_months() == range(1,13)
 
 ## Automation etiquette
 
-When executing notebooks in automation we don't want to collect and rebuild all the dataset from scratch. Instead, we should focus on the new data only. Therefore we changed the way how our datasets are stored and loaded. Since we perform our analysis monthly and our data is partitioned by months, we respects this scheme and store the dataset in month increments.
+When executing notebooks in automation we don't want to collect and rebuild all the datasets from scratch. Instead, we should focus on the new data only. Therefore we changed how our datasets are stored and loaded. Since we perform our analysis monthly and our data is partitioned by months, we respects this scheme and store the datasets in monthly increments.
 
-We also don't store the raw data, instead we only store the already preprocessed datasets. The new chunk of data is always uploaded to the general shared location in Ceph, where it is retained and available to be downloaded by the next runs. To facilitate this job, we implement a notebook that collect the dataset chunks from Ceph - see `01_collect_data/download_datasets.ipynb` notebook, this notebook is run in paralel to all other dataset preprocessing tasks. For the individual run purposes all the chunks are stored on a shared volume, where all our analysis tasks have access to it.
+We also don't store the raw data, instead we only store the preprocessed datasets. The new chunk of data is always uploaded to the general shared location in Ceph, where it is retained and available to be downloaded by the next run. To facilitate this job, we implement a notebook that collects the dataset chunks from Ceph - see `01_collect_data/download_datasets.ipynb`, this notebook is run in parallel to all other dataset preprocessing tasks. For the individual run purposes, all the chunks are stored on a shared volume where all our analysis tasks have access to it.
 
 And again, since the dataset is stored in multiple files, we need to simplify the loading mechanism for the notebooks - there's a `load_dataset` function in the `src/utils.py` file for this purpose.
 
 ## Container image
 
-Next aspect of automating a analytics repository with notebooks is to make an image out of it. We use [S2I](https://github.com/openshift/source-to-image) to facilitate that. We treat the repository as a regular Python project, so we expect a `Pipfile` that lists all the requirements of the notebook. Notebooks can't install any libraries in runtime, everything has to be baked into the image.
+The next aspect of automating an analytics repository with notebooks is to make an image out of it. We use [S2I](https://github.com/openshift/source-to-image) to facilitate that. We treat the repository as a regular Python project, so we expect a `Pipfile` that lists all the requirements of the notebooks. Notebooks can't install any libraries in runtime, everything has to be baked into the image.
 
-Additionally we require the repository to feature few additional dependencies:
+Additionally we require the repository to feature a few additional dependencies:
 
 - `nbconvert` - Executes the notebooks
 - `jupyter` - Provides the execution runtime
@@ -77,14 +77,14 @@ Additionally we require the repository to feature few additional dependencies:
 Since the packages mentioned above are executing the image for us, they can't be left as is and need to be properly configured. To do that we provide a `nbcovert` configuration file in `.jupyter` folder, that adjusts all the important settings, namely:
 
 - `c.ExecutePreprocessor.enabled = True` instructs the `nbcovert` to execute the notebook.
-- `c.ExecutePreprocessor.timeout = 1200` that defines a maximal time for a cell to be left in pending state (1200s in this particular case, should be fitted to your usecase). If the cell takes longer to execute, the runtime raises an exception and marks the task as failed.
+- `c.ExecutePreprocessor.timeout = 1200` defines a maximum time for a cell to be left in pending state (1200s in this particular case, should be fitted to your usecase). If the cell takes longer to execute, the runtime raises an exception and marks the task as failed.
 - `c.ExecutePreprocessor.kernel_name = 'python3` sets the Jupyter's `kernel_name` to the one present in the image. This overrides kernel settings in the notebook's metadata.
 
-And others that later facilitate debugging and storing of the rendered notebook.
+As well as others that later facilitate debugging and storing of the rendered notebook.
 
 ## Argo workflow
 
-The crucial and final part of the automation is to define a workflow. As we described in the previous section, we use a [`nbcovnert`](https://nbconvert.readthedocs.io/) to execute the notebooks. As part of the Argo workflow we define this as a task template that we later refer to in our actual execution tasks:
+The crucial and final part of the automation process is to define a workflow. As we described in the previous section, we use [`nbcovnert`](https://nbconvert.readthedocs.io/) to execute the notebooks. As part of the Argo workflow we define this as a task template that we later refer to in our actual execution tasks:
 
 ```yaml
 ...
@@ -113,11 +113,11 @@ spec:
           ...
 ```
 
-As you can see the task template defines a single `input` parameter - the notebook which is executed as a relative path within the `notebooks` folder. This parameter is later used in the `args` section for the `nbcovert` command. The arguments here simply instructs it to load the configuration file and points to the notebook.
+As you can see, the task template defines a single `input` parameter - the notebook which is executed as a relative path within the `notebooks` folder. This parameter is later used in the `args` section for the `nbcovert` command. The arguments here simply instructs it to load the configuration file and points to the notebook.
 
-This task template also sets all the environment variables we may need, the volume mounts, etc. You can also see this template has an `outputs` section, since we are collecting the rendered notebooks as well (with help by a specific configuration of the `nbcovert`'s output path).
+This task template also sets all the environment variables we may need, the volume mounts, etc. You can also see this template has an `outputs` section, since we are collecting the rendered notebooks as well (with some help from a specific configuration in the `nbcovert`'s output path).
 
-Later on, we just define the tasks (notebooks) order, in which we want to execute them. We orchestrate those tasks the same way as we would any Argo workload, using [`steps`](https://argoproj.github.io/docs/argo/examples/readme.html#steps) or [`dag`](https://argoproj.github.io/docs/argo/examples/readme.html#dag), etc. Additionally we can also use more advanced Argo features here like the [retry strategy](https://argoproj.github.io/docs/argo/examples/readme.html#retrying-failed-or-errored-steps) or others. Here's an example of a single task using the template defined above.
+Later on, we just define the tasks (notebooks) order in which we want to execute them. We orchestrate those tasks the same way as we would any Argo workload, using [`steps`](https://argoproj.github.io/docs/argo/examples/readme.html#steps) or [`dag`](https://argoproj.github.io/docs/argo/examples/readme.html#dag), etc. Additionally, we can use more advanced Argo features here like the [retry strategy](https://argoproj.github.io/docs/argo/examples/readme.html#retrying-failed-or-errored-steps) or others. Here's an example of a single task using the template defined above.
 
 ```yaml
 ...
@@ -134,7 +134,7 @@ spec:
         ...
 ```
 
-As you can see, extending the workflow with a tasks to runn a new analysis is fairly straightforward, all it takes are those 4 lines.
+As you can see, extending the workflow with a tasks to run a new analysis is fairly straightforward, all it takes are those 4 lines.
 
 If you drill down into our Argo setup you may discover more fine details, like the rendered notebook collection mechanisms or dataset collection task graph.
 
@@ -148,7 +148,7 @@ Each task stores the rendered notebook as an artifact:
 
 ![Artifacts](workflow_artifacts.png)
 
-And since it's Argo, it can provide quite detailed insight into the task details like a timeline drilldown:
+And since it's Argo, it can provide a quite detailed insight into the tasks, like a timeline drilldown:
 
 ![Timeline](workflow_drilldown.png)
 
