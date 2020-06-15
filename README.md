@@ -16,7 +16,7 @@ Please use the following outline to get started with a new AI Ops Data Science P
 
 5. Request a Ceph bucket  [here](https://help.datahub.redhat.com/docs/onboarding-to-ceph-s3)  and  add your data to it
 
-6. Create a  [CookieCutter](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)  formatted data science project (experimental, but let’s try it) 
+6. Create a  [CookieCutter](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)  formatted data science project from this [template repo](https://github.com/aicoe-aiops/project-template). Follow these [instructions](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to create a new repo from this template. 
 
 7. Create a private [GitHub repo](https://github.com/orgs/aicoe-aiops) in this org
 
