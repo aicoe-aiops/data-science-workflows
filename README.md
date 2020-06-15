@@ -12,11 +12,11 @@ Please use the following outline to get started with a new AI Ops Data Science P
 
 3. Put the doc into a subfolder of this  [shared directory](https://drive.google.com/drive/folders/17nhASQZUbGISFQswUb-ft3V1dxbD7dtX) 
 
-4. Copy this  [trello board](https://trello.com/b/lp1G9yLk/ai-ops-ds-project-template) 
+4. Copy this  [project board](https://github.com/orgs/aicoe-aiops/projects/2) to a new organization level project board including automation. See [Copying a project board](https://help.github.com/en/github/managing-your-work-on-github/copying-a-project-board)
 
 5. Request a Ceph bucket  [here](https://help.datahub.redhat.com/docs/onboarding-to-ceph-s3)  and  add your data to it
 
 6. Create a  [CookieCutter](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)  formatted data science project (experimental, but let’s try it) 
 
-7. Create a  [gitlab](https://gitlab.cee.redhat.com/)  repo
+7. Create a private [GitHub repo](https://github.com/orgs/aicoe-aiops) in this org
 
