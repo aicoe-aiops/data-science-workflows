@@ -1,6 +1,6 @@
 # data-science-workflows
 
-### Start Here: AI Ops DS Project
+## Start Here: AI Ops DS Project
 
 
 Please use the following outline to get started with a new AI Ops Data Science Project:
@@ -20,3 +20,15 @@ Please use the following outline to get started with a new AI Ops Data Science P
 
 7. Create a private [GitHub repo](https://github.com/orgs/aicoe-aiops) in this org
 
+## GitHub workflow
+
+1. Create an issue for every task you plan to work on
+1. Add the issue to the *New* column of the corresponding project board
+1. Let somebody from the team review the issue and refine until it's clear what should be done and what defines done
+   1. provide some sort acceptance criteria
+   1. break the issue into smaller pieces if it can't be done in one sprint
+1. Move the issue to the *To Do* column
+1. Once you start work on the issue move to the *In Progress* column and assign it to yourself
+1. Create a PR for the issue and reference the issue in the PR description
+1. Let somebody from the team review the PR - never merge your own PRs
+ 
