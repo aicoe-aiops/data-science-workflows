@@ -1,0 +1,66 @@
+
+// Module included in the following assemblies:
+//
+// <List assemblies here, each on a new line>
+[id='openshift-sme-analysis']
+= Documented process for AI project engagements in AI Ops
+:stasis-tags: ai-workflow, data-science, workflow, ai-project
+
+[.lead]
+
+:toc: macro
+
+*Author(s) :* _Michael Clifford (mcliffor@redhat.com)_
+
+*Date Created :* _10 June 2020_
+
+*Date Updated :* _15 June 2020_
+
+*Tags:* _#ai-workflow, #data-science, #workflow, #ai-project_
+
+=== *Abstract*
+
+Over the last couple of months the AI Ops team has been working on developing a more structured process around how we manage, execute and deliver on our data science projects, especially those where we collaborate with other Red Hat teams. 
+
+To that end we have put together a number of resources to help us implement this new process (see Get Started below), including a video walkthrough that outliners some of this content.
+
+Having a common framework that we can all start to build from as the team grows and continues to take on more data science projects, it will be hugely beneficial to have an agreed upon and documented process like this in place. And more important than just the existence of some documentation, is that we actually use these tools and find that they provide us with some value. Meaning, that we should keep updating and evolving this process to suit our needs. To do that we are very interested in hearing your thoughts and getting your feedback (and ideally adoption) on this data science project workflow to see where it can be improved, streamlined or simply be made clearer.   
+
+=== *Get Started*
+
+A video walkthrough of some of the content can be viewed https://drive.google.com/open?id=1otGNVnNftpg8hLCzsWnnPmp6dDELb3Sc[here]
+
+Some key timestamps so you can jump to the information you are most interested in
+
+04:07   Start Here Documentation
+
+07:03   Project Workflow 
+
+19:00   Trello Template
+
+21:58   Reporting Tool  
+
+The resources mentioned in the video can be found in our google drive under the https://drive.google.com/drive/folders/1z_pk2ZgwB-uzZjcCRGMykK2I5J18CxQM[AIOps/AIOps Data Science Project/Workflow for AI Ops] directory including:
+
+* https://docs.google.com/document/d/1RuxcNIAoUI7fbF432yvVzd398NCSX8RxuD9sFpaBDpk/edit[Start Here Guide] - provides all the links and steps needed to start a new project
+
+* https://docs.google.com/document/d/1LqVXQbd81IdPfoXw2B0iCcnb-ygCVvdy_8vejY08zZ4/edit[Project Workflow Overview] - details all the phases and deliverables expected of a project 
+
+We have also created a template https://trello.com/b/lp1G9yLk/ai-ops-ds-project-template[trello board] that reflects the steps and deliverables in the project workflow document that anyone can use for their own projects. 
+
+And finally, if you'd like to see how we are aggregating this information on our team to monitor group progress please see this https://docs.google.com/spreadsheets/d/1MgeB9RVzG4fYmAHNm6b-q4pceKNbduZ1qzCYz-hkJJ4/edit#gid=0[tracking sheet]. 
+
+
+=== *How to Contribute / Provide feedback*
+
+Please reach out to the author of the blog for any questions.
+
+=== *Resources*
+
+* https://trello.com/b/lp1G9yLk/ai-ops-ds-project-template[Trello Board]
+* https://docs.google.com/document/d/1RuxcNIAoUI7fbF432yvVzd398NCSX8RxuD9sFpaBDpk/edit[Start Here Guide]
+* https://docs.google.com/document/d/1LqVXQbd81IdPfoXw2B0iCcnb-ygCVvdy_8vejY08zZ4/edit[Project Workflow Overview]
+* https://docs.google.com/spreadsheets/d/1MgeB9RVzG4fYmAHNm6b-q4pceKNbduZ1qzCYz-hkJJ4/edit#gid=0[Project Tracking Sheet]
+
+
+
