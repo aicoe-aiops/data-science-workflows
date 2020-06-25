@@ -10,7 +10,7 @@ The main purpose of this repository is to provide and document the analysis proc
 
 The notebooks are structured in such a way that each is expected to perform a specific and distinct function. As a byproduct, this also defines the flow of tasks, a clear path which the analyst, user or the automation is expected to follow. We consider as an anti-pattern the practise of cross-linking notebooks from the middle of another notebook. Notebooks have to be executable as a whole, without interruption, with the only exception being where one is dependant on another. In that case, once the prerequisite notebooks are run, the notebook, again, has to be executable as a whole. In other words, the notebook dependencies have to be resolved before the notebook execution starts.
 
-### Folder strucuture
+### Folder structure
 
 For organization purposes we broke the `notebooks` folder in this repo into 3 different folders. This organization doesn't effect the automation in any way. It's present only for the purposes of developer and analyst orientation in the repo and making the notebook flow more obvious.
 
