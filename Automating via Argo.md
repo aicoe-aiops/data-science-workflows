@@ -48,9 +48,43 @@ else:
     # Run in JupyterHub
 ```
 
-We also introduce a couple of utility functions that help to decide (again, based on the execution environment) what range of data we're working with. See `src/utils.py` for details. These functions allows us to use the same code with different results based on the environment, eg:
+We also introduce a couple of utility functions that help to decide (again, based on the execution environment) what range of data we're working with. These functions allows us to use the same code with different results based on the environment, eg:
 
 ```python
+# src/utils.py
+import os
+import datetime
+
+# Get last day of previous month
+LAST_MONTH_DATE = datetime.datetime.now().replace(day=1) - datetime.timedelta(days=1)
+
+def get_years() -> Iterator[int]:
+    """Helper generator to iterate over years.
+
+    Get applicable years for dataset collection.
+
+    Yields:
+        Iterable[int]: Iterable of year integers.
+    """
+    if os.getenv("RUN_IN_AUTOMATION", False):
+        yield from [LAST_MONTH_DATE.year]
+    else:
+        yield from range(2019, datetime.datetime.now().year + 1)
+
+
+def get_months() -> Iterator[int]:
+    """Helper generator to iterate over months.
+
+    Get applicable months for dataset collection.
+
+    Yields:
+        Iterator[int]: Iterable of months integers.
+    """
+    if os.getenv("RUN_IN_AUTOMATION", False):
+        yield from [LAST_MONTH_DATE.month]
+    else:
+        yield from range(1, 13)
+
 # in Automation
 get_months() == [<PREVIOUS_MONTH_NUMBER>]
 # in JupyterHub
@@ -63,7 +97,27 @@ When executing notebooks in automation we don't want to collect and rebuild all 
 
 We also don't store the raw data, instead we only store the preprocessed datasets. The new chunk of data is always uploaded to the general shared location in Ceph, where it is retained and available to be downloaded by the next run. To facilitate this job, we implement a notebook that collects the dataset chunks from Ceph, this notebook is run in parallel to all other dataset preprocessing tasks. For the individual run purposes, all the chunks are stored on a shared volume where all our analysis tasks have access to it.
 
-And again, since the dataset is stored in multiple files, we need to simplify the loading mechanism for the notebooks - there's a `load_dataset` function in the `src/utils.py` file for this purpose.
+And again, since the dataset is stored in multiple files, we need to simplify the loading mechanism for the notebooks - let's define a `load_dataset` function:
+
+```python
+# src/utils.py
+from pathlib import Path
+import pandas as pd
+
+def load_dataset(path:str) -> pd.DataFrame:
+    """Load all dataset chunks in a folder.
+
+    Get all dataset chunks in a folder and concat them into a single DataFrame.
+
+    Args:
+        path (str): Dataset folder location.
+
+    Returns:
+        pd.DataFrame: Concatenated DataFrame containing all chunks.
+    """
+    dataset_chunks_df = (pd.read_csv(f, index_col='Unnamed: 0') for f in Path(path).glob("*.csv"))
+    return pd.concat(dataset_chunks_df, ignore_index=True)
+```
 
 ## Container image
 
