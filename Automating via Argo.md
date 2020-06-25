@@ -1,10 +1,10 @@
-# Automating notebooks A-Z
+# Automating via Argo
 
-This repo is being automated. This document outlines the principles on which this specific automation is based and hopes to serve as a guide for future, similar use cases.
+This document outlines the principles on which an analytics repository based on the [project-template](https://github.com/aicoe-aiops/project-template) can be automated via Argo.
 
 ## Reasoning
 
-The main purpose of this repository is to provide and document the analysis process for a specific use case. It does so via analysis notebooks which operate over a continuous stream of data. To receive a fresh results it is required that the notebooks are rerun every time new data becomes available. This fact alone presents a great opportunity for automation. And since the analysis is already broken into Jupyter notebooks, where each specific notebook has a distinct role in the process, it is even more well suited for automation.
+Project template expects the analyst to work with Jupyter notebooks to provide a analysis, generate visualizations, reports and aggregate data as explorable tables. To receive fresh results it is required that the notebooks are rerun every time new data becomes available. This fact alone presents a great opportunity for automation. And since the analysis is already broken into Jupyter notebooks, where each specific notebook has a distinct role in the process, it is even more well suited for automation.
 
 ## Notebooks
 
@@ -61,7 +61,7 @@ get_months() == range(1,13)
 
 When executing notebooks in automation we don't want to collect and rebuild all the datasets from scratch. Instead, we should focus on the new data only. Therefore we changed how our datasets are stored and loaded. Since we perform our analysis monthly and our data is partitioned by months, we respect this scheme and store the datasets in monthly increments.
 
-We also don't store the raw data, instead we only store the preprocessed datasets. The new chunk of data is always uploaded to the general shared location in Ceph, where it is retained and available to be downloaded by the next run. To facilitate this job, we implement a notebook that collects the dataset chunks from Ceph - see `01_collect_data/download_datasets.ipynb`, this notebook is run in parallel to all other dataset preprocessing tasks. For the individual run purposes, all the chunks are stored on a shared volume where all our analysis tasks have access to it.
+We also don't store the raw data, instead we only store the preprocessed datasets. The new chunk of data is always uploaded to the general shared location in Ceph, where it is retained and available to be downloaded by the next run. To facilitate this job, we implement a notebook that collects the dataset chunks from Ceph, this notebook is run in parallel to all other dataset preprocessing tasks. For the individual run purposes, all the chunks are stored on a shared volume where all our analysis tasks have access to it.
 
 And again, since the dataset is stored in multiple files, we need to simplify the loading mechanism for the notebooks - there's a `load_dataset` function in the `src/utils.py` file for this purpose.
 
@@ -140,17 +140,17 @@ If you drill down into our Argo setup you may discover more fine details, like t
 
 ## Result
 
-In our case the resulting workflow, when executed, looks like this:
+We piloted this automation process on the [OpenShift SME mailing list analysis](https://github.com/aicoe-aiops/openshift-sme-mailing-list-analysis) project. The automation result - a workflow, when executed, looks like this:
 
-![Workflow diagram](workflow_diagram.png)
+![Workflow diagram](assets/images/workflow_diagram.png)
 
 Each task stores the rendered notebook as an artifact:
 
-![Artifacts](workflow_artifacts.png)
+![Artifacts](assets/images/workflow_artifacts.png)
 
 And since it's Argo, it can provide a quite detailed insight into the tasks, like a timeline drilldown:
 
-![Timeline](workflow_drilldown.png)
+![Timeline](assets/images/workflow_drilldown.png)
 
 Or a CLI drilldown:
 
