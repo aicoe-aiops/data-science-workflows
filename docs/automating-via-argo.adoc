@@ -1,24 +1,37 @@
-# Automating via Argo
+= Automating via Argo
+:stasis-tags: automating-via-argo, argo
 
-This document outlines the principles on which an analytics repository based on the [project-template](https://github.com/aicoe-aiops/project-template) can be automated via Argo.
+[.lead]
 
-## Reasoning
+:toc: macro
+
+*Author(s) :* _Tomáš Coufal (tcoufal@redhat.com)_
+
+*Date Created :* _25 June 2020_
+
+*Date Updated :* _25 June 2020_
+
+*Tags:* _#automating-via-argo, #argo_
+
+This document outlines the principles on which an analytics repository based on the https://github.com/aicoe-aiops/project-template[project-template] can be automated via Argo.
+
+== Reasoning
 
 Project template expects the analyst to work with Jupyter notebooks to provide a analysis, generate visualizations, reports and aggregate data as explorable tables. To receive fresh results it is required that the notebooks are rerun every time new data becomes available. This fact alone presents a great opportunity for automation. And since the analysis is already broken into Jupyter notebooks, where each specific notebook has a distinct role in the process, it is even more well suited for automation.
 
-## Notebooks
+== Notebooks
 
 The notebooks are structured in such a way that each is expected to perform a specific and distinct function. As a byproduct, this also defines the flow of tasks, a clear path which the analyst, user or the automation is expected to follow. We consider as an anti-pattern the practise of cross-linking notebooks from the middle of another notebook. Notebooks have to be executable as a whole, without interruption, with the only exception being where one is dependant on another. In that case, once the prerequisite notebooks are run, the notebook, again, has to be executable as a whole. In other words, the notebook dependencies have to be resolved before the notebook execution starts.
 
-### Folder structure
+=== Folder structure
 
 For organization purposes we broke the `notebooks` folder in this repo into 3 different folders. This organization doesn't effect the automation in any way. It's present only for the purposes of developer and analyst orientation in the repo and making the notebook flow more obvious.
 
-- `01_collect_data` - The purpose of notebooks in this folder is to gradually prepare the datasets which are required for the analysis. These notebooks respect a common runtime layout, an API if you will, that defines where to store data, what data should be downloaded and under what circumstances. Especially, when a notebook is run in automation, we don't want to process all the historical data again, we prefer to process only the incremental addition to the dataset and reuse the rest of the dataset chunks from previous runs. On the other hand, when the notebooks are run in a standalone environment for exploration purposes - like in a JupyterHub for example, we want the notebooks to be usable as well. And we can't expect the data scientist or any other third party to have access to our preprocessed data. In such cases we want to retain the ability to process the dataset as a whole.
-- `02_analyses` - Notebooks in this folder are meant to analyse one or more datasets and provide some findings. Here, the actual results of the data scientist's works are documented and presented. Each notebook in this folder can be run separately and doesn't depend on any other notebook here. In automation we expect all notebooks in this folder to be run in parallel and independently.
-- `experimental` - Notebooks that are not expected to be executed during the automated runs. They are left here for experimentation and analyst curiosity.
+* `01_collect_data` - The purpose of notebooks in this folder is to gradually prepare the datasets which are required for the analysis. These notebooks respect a common runtime layout, an API if you will, that defines where to store data, what data should be downloaded and under what circumstances. Especially, when a notebook is run in automation, we don't want to process all the historical data again, we prefer to process only the incremental addition to the dataset and reuse the rest of the dataset chunks from previous runs. On the other hand, when the notebooks are run in a standalone environment for exploration purposes - like in a JupyterHub for example, we want the notebooks to be usable as well. And we can't expect the data scientist or any other third party to have access to our preprocessed data. In such cases we want to retain the ability to process the dataset as a whole.
+* `02_analyses` - Notebooks in this folder are meant to analyse one or more datasets and provide some findings. Here, the actual results of the data scientist's works are documented and presented. Each notebook in this folder can be run separately and doesn't depend on any other notebook here. In automation we expect all notebooks in this folder to be run in parallel and independently.
+* `experimental` - Notebooks that are not expected to be executed during the automated runs. They are left here for experimentation and analyst curiosity.
 
-### Data exchange protocol
+=== Data exchange protocol
 
 Let's imagine a scenario: A data analysts, working in JupyterHub opens a notebook. He works on that notebook and wants to store the results in the JupyterHub instance. He does that because later he may want to reuse these findings in another notebook. Once he opens this hypothetical second notebook, he expects he can load the data here by using the very same path he used before to store it. This is a common way of exchanging data when creating analysis. However, it creates a dependency between notebooks that has to be respected.
 
@@ -33,7 +46,7 @@ This ensures a common pattern is maintained across all notebooks that would like
 1. When executed in JupyterHub, this resolves to `data/subfolder/dataset.csv`
 2. In an automation environment this translates to `/shared_folder_mount_point/subfolder/dataset.csv`
 
-### Automation specific behavior
+=== Automation specific behavior
 
 There are places in the notebook, where we want to differentiate the behavior, based on the environment in which the notebook is being executed. For instance, when it comes to publishing the analysis results. We want to be able to execute all the notebook's cells in JupyterHub but we may not want to touch the data we publish to consumers. Or we may want to collect all the datasets from scratch in JupyterHub, while in automation we want to reuse our previously populated dataset chunks.
 
@@ -91,7 +104,7 @@ get_months() == [<PREVIOUS_MONTH_NUMBER>]
 get_months() == range(1,13)
 ```
 
-## Automation etiquette
+=== Automation etiquette
 
 When executing notebooks in automation we don't want to collect and rebuild all the datasets from scratch. Instead, we should focus on the new data only. Therefore we changed how our datasets are stored and loaded. Since we perform our analysis monthly and our data is partitioned by months, we respect this scheme and store the datasets in monthly increments.
 
@@ -119,9 +132,9 @@ def load_dataset(path:str) -> pd.DataFrame:
     return pd.concat(dataset_chunks_df, ignore_index=True)
 ```
 
-## Container image
+== Container image
 
-The next aspect of automating an analytics repository with notebooks is to make an image out of it. We use [S2I](https://github.com/openshift/source-to-image) to facilitate that. We treat the repository as a regular Python project, so we expect a `Pipfile` that lists all the requirements of the notebooks. Notebooks can't install any libraries in runtime, everything has to be baked into the image.
+The next aspect of automating an analytics repository with notebooks is to make an image out of it. We use https://github.com/openshift/source-to-image[S2I] to facilitate that. We treat the repository as a regular Python project, so we expect a `Pipfile` that lists all the requirements of the notebooks. Notebooks can't install any libraries in runtime, everything has to be baked into the image.
 
 Additionally we require the repository to feature a few additional dependencies:
 
@@ -136,9 +149,9 @@ Since the packages mentioned above are executing the image for us, they can't be
 
 As well as others that later facilitate debugging and storing of the rendered notebook.
 
-## Argo workflow
+== Argo workflow
 
-The crucial and final part of the automation process is to define a workflow. As we described in the previous section, we use [`nbcovnert`](https://nbconvert.readthedocs.io/) to execute the notebooks. As part of the Argo workflow we define this as a task template that we later refer to in our actual execution tasks:
+The crucial and final part of the automation process is to define a workflow. As we described in the previous section, we use https://nbconvert.readthedocs.io/[`nbcovnert`] to execute the notebooks. As part of the Argo workflow we define this as a task template that we later refer to in our actual execution tasks:
 
 ```yaml
 ...
@@ -171,7 +184,7 @@ As you can see, the task template defines a single `input` parameter - the noteb
 
 This task template also sets all the environment variables we may need, the volume mounts, etc. You can also see this template has an `outputs` section, since we are collecting the rendered notebooks as well (with some help from a specific configuration in the `nbcovert`'s output path).
 
-Later on, we just define the tasks (notebooks) order in which we want to execute them. We orchestrate those tasks the same way as we would any Argo workload, using [`steps`](https://argoproj.github.io/docs/argo/examples/readme.html#steps) or [`dag`](https://argoproj.github.io/docs/argo/examples/readme.html#dag), etc. Additionally, we can use more advanced Argo features here like the [retry strategy](https://argoproj.github.io/docs/argo/examples/readme.html#retrying-failed-or-errored-steps) or others. Here's an example of a single task using the template defined above.
+Later on, we just define the tasks (notebooks) order in which we want to execute them. We orchestrate those tasks the same way as we would any Argo workload, using https://argoproj.github.io/docs/argo/examples/readme.html#steps[`steps`] or https://argoproj.github.io/docs/argo/examples/readme.html#dag[`dag`], etc. Additionally, we can use more advanced Argo features here like the https://argoproj.github.io/docs/argo/examples/readme.html#retrying-failed-or-errored-steps[retry strategy] or others. Here's an example of a single task using the template defined above.
 
 ```yaml
 ...
@@ -194,17 +207,17 @@ If you drill down into our Argo setup you may discover more fine details, like t
 
 ## Result
 
-We piloted this automation process on the [OpenShift SME mailing list analysis](https://github.com/aicoe-aiops/openshift-sme-mailing-list-analysis) project. The automation result - a workflow, when executed, looks like this:
+We piloted this automation process on the https://github.com/aicoe-aiops/openshift-sme-mailing-list-analysis[OpenShift SME mailing list analysis] project. The automation result - a workflow, when executed, looks like this:
 
-![Workflow diagram](assets/images/workflow_diagram.png)
+image:../assets/images/workflow_diagram.png[Workflow diagram]
 
 Each task stores the rendered notebook as an artifact:
 
-![Artifacts](assets/images/workflow_artifacts.png)
+image:../assets/images/workflow_artifacts.png[Artifacts]
 
 And since it's Argo, it can provide a quite detailed insight into the tasks, like a timeline drilldown:
 
-![Timeline](assets/images/workflow_drilldown.png)
+image:../assets/images/workflow_drilldown.png[Timeline]
 
 Or a CLI drilldown:
 
