@@ -209,15 +209,15 @@ If you drill down into our Argo setup you may discover more fine details, like t
 
 We piloted this automation process on the https://github.com/aicoe-aiops/openshift-sme-mailing-list-analysis[OpenShift SME mailing list analysis] project. The automation result - a workflow, when executed, looks like this:
 
-image:../assets/images/workflow_diagram.png[Workflow diagram]
+pass:[<img src="/assets/potential-diagnosis-discovery-blog/workflow_diagram.png" alt="Workflow diagram" class="img-responsive">]
 
 Each task stores the rendered notebook as an artifact:
 
-image:../assets/images/workflow_artifacts.png[Artifacts]
+pass:[<img src="/assets/potential-diagnosis-discovery-blog/workflow_artifacts.png" alt="Artifacts" class="img-responsive">]
 
 And since it's Argo, it can provide a quite detailed insight into the tasks, like a timeline drilldown:
 
-image:../assets/images/workflow_drilldown.png[Timeline]
+pass:[<img src="/assets/potential-diagnosis-discovery-blog/workflow_drilldown.png" alt="Timeline" class="img-responsive">]
 
 Or a CLI drilldown:
 
