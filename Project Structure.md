@@ -29,9 +29,9 @@ This should be seen as a living document that gets modified and updated as we co
 
 
 
-4. Every project will be tracked in its own trello board for task tracking and a shared google drive folder for artifacts. 
+4. Every project will be tracked in its parent's organization level Github project board for task tracking and a shared google drive folder for artifacts. 
 
-	1. Trello Board  [Template](https://trello.com/b/lp1G9yLk/ai-ops-ds-project-template) 
+	1. Github [Project Board](https://github.com/orgs/aicoe-aiops/projects) 
 
 	2. Google [ Drive](https://drive.google.com/drive/folders/17nhASQZUbGISFQswUb-ft3V1dxbD7dtX) 
 
