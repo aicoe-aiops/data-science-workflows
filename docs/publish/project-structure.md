@@ -155,15 +155,3 @@ This should be seen as a living document that gets modified and updated as we co
 
 		1. Final presentation/ write up and delivery of all artifacts to date 
 
-
-Along with these 7 stages, please review this  [checklist](https://tdgunes.com/COMP6246-2018Fall/lab1/extra1_3.pdf)  for additional details and support on how to structure an AI Ops  Data Science Project.
-**References:**
-
-Getting Started AI Ops Checklist:
- [https://docs.google.com/document/d/1RuxcNIAoUI7fbF432yvVzd398NCSX8RxuD9sFpaBDpk/edit](https://docs.google.com/document/d/1RuxcNIAoUI7fbF432yvVzd398NCSX8RxuD9sFpaBDpk/edit) 
-
-Earlier Workflow Template:
- [https://docs.google.com/document/d/1GJCjvJOK6mWc83EkpZUsOHi-CZ7CrG78XPMnDXE0Nn8/edit](https://docs.google.com/document/d/1GJCjvJOK6mWc83EkpZUsOHi-CZ7CrG78XPMnDXE0Nn8/edit) 
-
-Project checklist:
- [https://tdgunes.com/COMP6246-2018Fall/lab1/extra1_3.pdf](https://tdgunes.com/COMP6246-2018Fall/lab1/extra1_3.pdf) 
