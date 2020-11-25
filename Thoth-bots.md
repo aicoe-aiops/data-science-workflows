@@ -38,7 +38,7 @@
 
 ## Zuul (Sesheta)
 
-* You can use the [zuul](https://github.com/thoth-station/zuul-config) bot to set up automatic testing and merging for your PRs. <br>
+* You can use the [zuul](https://github.com/thoth-station/zuul-config) bot to set up automatic testing and merging for your PRs.
 
 * Zuul can be configured using a yaml configuration file ([.zuul.yaml](https://github.com/thoth-station/zuul-config#integration-of-zuul-with-github-repos))
 
