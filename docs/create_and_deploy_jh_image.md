@@ -57,7 +57,7 @@ After creating the robot you need to set the permissions it will possess.
 
 And finally, you need to copy the secret and give it to Thoth. Copy the secret here:
 
-![quay-robot-2](../public/assets/jh_image_howto/quay-secret.png)
+![quay-robot-2](../public/assets/jh_image_howto/quay-secret-cred.png)
 
 This is currently a manual process so just, please, send the secret (the whole yaml) to @harshad16 to have it added.
 
