@@ -1,12 +1,15 @@
-# How to create a Jupyterhub image and deploy it on ODH
+# How to create a JupyterHub image and deploy it on ODH
 
-This howto is about getting your repository built into an image and having that image made available in (your) Jupyterhub instance.
+This how-to is about getting your repository built into an image and having that image made available in (your) JupyterHub instance.
 
 We are going to deal with 2 issues:
 
  1. Build an image and add to a public image repository.
- 2. Add your image to an ODH instance (that has a Jupyterhub in it).
+ 2. Add your image to an ODH instance (that has a JupyterHub in it).
 
+If you want to see a video walkthrough of this guide with an example project, please check out the video below:
+
+`video: https://www.youtube.com/watch?v=R61i15hb4B0&feature=youtu.be`
 
 If you don't have an ODH instance that you would like to work with, you can create one using these guides:
 
