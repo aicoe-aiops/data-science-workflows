@@ -105,7 +105,7 @@ If you have done these steps correctly, Thoth will pick up your tag and run a im
 
 ## Checking and debugging the build
 
-You can login to https://tekton-dashboard-openshift-pipelines.apps.ocp4.prod.psi.redhat.com/ and find your build by using the search field. Enter "project:<YOUR_REPO_NAME>".
+You can login to https://tekton.operate-first.cloud/#/namespaces/opf-ci-pipelines/pipelineruns and find your build by using the search field. Enter "project:<YOUR_REPO_NAME>".
 
 ![Tekton: search a build](../public/assets/jh_image_howto/thoth-pipeline-run.png)
 
