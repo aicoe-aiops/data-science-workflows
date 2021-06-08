@@ -1,25 +1,33 @@
-# Guidelines for Reviewing Data Science Code
+# 10 Principles for Reviewing Data Science Code
 
-Code reviews are common practice in the software engineering field and have been for some time. They provide developers with a well defined approach to sharing knowledge, ensuring exposure to new ideas and technologies, enforcing quality assurance of code and standards for the engineering process across both the code base and the team itself.  As members of the AI CoE in the office of the CTO, we believe that having a well defined approach for how to do the same thing with data science and machine learning code is critical. Although, code is code, and we approach data science work as a subset of software engineering, there are some data science specific challenges associated with the code review process that should be addressed. Below are the 11 guidelines we use in our group to review data science work.     
+Code reviews are common practice in the software engineering field and have been for some time. They provide developers with a well defined approach to sharing knowledge, ensuring exposure to new ideas and technologies, enforcing quality assurance of code and standards for the engineering process across both the code base and the team itself. As members of the AI CoE in the office of the CTO, we believe that having a well defined approach for how to do the same thing with data science and machine learning code is critical. Although, code is code, and we approach data science work as a subset of software engineering, there are some data science specific challenges associated with the code review process that should be addressed. Below are the 10 principles we use in our group to review data science work.
 
-1. **Understand the PR** : When asked for a review, make sure to first understand the issue linked and the goal of the pull request.
+1. **Understand the Context** : Make sure you read the pull request description and any linked issues so you know the data scientist's goal. This will help you provide an appropriate level of feedback and focus on the meaningful changes. 
 
-2. **NB Review** : Use tools like NB review when possible while reviewing Jupyter Notebooks, this will make reviewing the notebooks easier.
+2. **Rich Diffs** : Use tools like [NBreview](https://www.reviewnb.com/) or [nbdime](https://github.com/jupyter/nbdime) when possible to review notebooks. These kinds of tools help you zero in on the notebook changes that actually matter. 
 
-3. **Don’t be afraid to ask questions** : When reviewing someone’s code, if you don't understand something or are curious about why a certain approach was implemented, ask questions and get clarification. 
+3. **Is it Coherent?** : Notebooks generally contain a mix of code, markdown and plots. Do these elements reference each other correctly? Is the evaluation metric being used here suitable for the ML algorithm ? If you don’t understand something or are curious about why a certain approach was implemented, ask and get clarification.
 
-4. **Read Carefully** : Read the notebook thoroughly and try to look for logical errors or bugs in the code. Make sure you bring up any possible edge cases the code will not handle correctly.
+4. **Check the Math!** : Machine Learning code can run successfully while still being wrong and not achieving the appropriate task. Read the notebook thoroughly and try to look for any mathematical errors in the code with reference to the PR's stated goal. 
 
-5. **Find ways to clean and condense the code** : Suggest alternate approaches to perform a similar action as the current code. This will present new techniques and various implementations for the team to consider.
+5. **Does it solve the right problem?** : Make sure the goals of the PR or notebook are met, the key takeaways are highlighted and the data scientist’s interpretation of any statistical and/ or experimental results are included.
 
-6. **Future steps and actions** : Make sure the goals of the notebook are met in the end, the key takeaways are highlighted and should contain the data scientist's interpretation of any statistical and/ or experimental results. While reviewing the code, it is important to ensure that future actions are mentioned so that readers or future developers picking up the work will know the developer's intentions for follow up experiments or implementations. 
+6. **Introduce new libraries or technologies** : When working on a data science project, there might be times when you are aware of a library or new technology that can address the problem in a more efficient way. In such scenarios, you should suggest this approach in the code review.
 
-7. **Introduce new libraries or technologies** : When working on a data science project, there might be times when you are aware of a library or new technology that can address the problem in a more efficient way. In such scenarios, you should suggest this approach in the code review.
+7. **Is it reproducible?** : Are all of the dependencies used to run the code appropriately tracked using a pipfile or requirements.txt ? If you are unsure about any outputs or results, clone the pull request to your environment and run it yourself. It should run from top to bottom without error and generate the same outputs as are presented in the PR.
 
-8. **Code Optimization** : Suggest ways to restructure nested functions/loops if possible. 
+8. **Understand the visualizations** : When reviewing a PR that includes visualizations, make sure to check for the proper labeling of axes and ticks. All the values mentioned should be clear and have an explanation for each graph.
 
-9. **Evaluate the output for each cell** : If you are unsure about any output, clone the pull request to your environment and try to run it yourself for better understanding.
+9. **Hardcoded Credentials and Paths** : Sometimes developers use hardcoded credentials, secrets and even data directories for quick tests and easy access when needed and forget to remove them before publishing them to github. When reviewing a Data Science code, make sure to check for any credentials/secrets as this practice poses a significant security risk that can allow attackers to bypass authentication mechanisms and ensure that the data management is handled properly and there are no hardcoded directories in the code.
 
-10. **Understand the visualizations** : When reviewing a PR that includes visualizations, make sure to check for the proper labeling of axes and ticks. All the values mentioned should be clear and have an inference for each graph.
+10.  **Evaluate the Output** : Everything looks right, but our validation results are way worse than expected. Sometimes the simplest things can go wrong like over-fitting, poorly tuned hyper-parameters or maybe an inappropriate distance metrics being used? Make sure to double-check all the smallest detail when reviewing a ML code.
 
-11. **Readability and Code Commenting** : Well commented code makes it easier to understand what the code is doing and, more importantly, why it is doing it a particular way. Comments are meant to be read by future programmers and should be clear and precise. If you need to pause frequently during the review yourself, it might be because readability is not that great and readability also depends on having appropriate comments in the code.
+**References** :
+
+There are various guidelines for standard Pull Request reviews, here are a few examples, but our principles take these best practices into consideration and targets Data Scientists working on AI/ML code using Jupyter Notebooks.
+
+* https://thoughtbot.com/playbook/developing/code-reviews
+* https://github.com/thoughtbot/guides/tree/main/code-review
+* https://taingmeng.medium.com/what-you-should-look-out-for-when-you-review-pull-request-3f2d95a50ba9
+* https://blog.codacy.com/how-to-code-review-in-a-pull-request/
+* https://towardsdatascience.com/15-topics-to-consider-as-you-review-code-in-data-science-10eff0182e71
