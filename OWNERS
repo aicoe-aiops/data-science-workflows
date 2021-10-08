@@ -1,0 +1,16 @@
+# See the OWNERS docs at https://go.k8s.io/owners
+
+approvers:
+  - chauhankaranraj
+  - michaelclifford
+  - oindrillac
+reviewers:
+  - aakankshaduggal 
+  - chauhankaranraj
+  - hemajv
+  - isabelizimm 
+  - margarethaley
+  - michaelclifford 
+  - oindrillac
+  - shreyanand
+  - suppathak
