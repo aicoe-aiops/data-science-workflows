@@ -162,7 +162,7 @@ For example
 
     - in [kfdefs/base/jupyterhub/notebook-images](https://github.com/operate-first/apps/tree/master/kfdefs/base/jupyterhub/notebook-images) where `base` in the overlays concept means that this image will be applied to all instances/overlays that have JupyterHub. In this case you can open a similar [Pull Request](https://github.com/operate-first/apps/pull/411/files).
 
-    - in [kfdefs/overlays](https://github.com/operate-first/apps/tree/master/kfdefs/overlays) you fill find all instances maintained by ArgoCD and you can choose to add the image only to a specific instance/overlay and not to all. In this case you can open a similar [Pull Request](https://github.com/operate-first/apps/pull/1148/files) (e.g. if you need to add an image to `osc` overlay). NOTE: _`overlay` concept is used also to override manifests from `base`, for example if you want a different image version in a specific `overlay`._
+    - in [kfdefs/overlays](https://github.com/operate-first/apps/tree/master/kfdefs/overlays) you will find all instances maintained by ArgoCD and you can choose to add the image only to a specific instance/overlay and not to all. In this case you can open a similar [Pull Request](https://github.com/operate-first/apps/pull/1148/files) (e.g. if you need to add an image to `osc` overlay). NOTE: _`overlay` concept is used also to override manifests from `base`, for example if you want a different image version in a specific `overlay`._
 
  * If you need to add your image to the internal DH (ODH instance run by DH team), make a PR against the `production` branch here:
 https://github.com/AICoE/idh-manifests/blob/production/jupyterhub/bases/custom-images/jupyterhub-custom-images.yaml
