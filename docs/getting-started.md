@@ -1,4 +1,4 @@
-## **Getting Started**
+## Getting Started
 
 Please use the following outline to get started with a new Data Science Project. If you run into any problems or need additional support, please join our [slack](https://operatefirst.slack.com/ssb/redirect) and post a message in the `#support` channel, or open an issue [here](https://github.com/operate-first/support/issues).  
 

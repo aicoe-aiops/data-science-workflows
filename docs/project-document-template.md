@@ -1,4 +1,4 @@
-# Title - Project Description 
+# Project Outline Template
 
 
 ## _Authors,  20xx-Month-Day vx.x.x-dev_
