@@ -1,6 +1,6 @@
-# **Best Practices for Data Science Visualizations**
+## Best Practices for Data Science Visualizations
 
-## **Purpose**
+### **Purpose**
 
 _Visualizations are meant to supplement and provide clarity and insight into the claims being made about the data. People are generally not analytical and are naturally better at interpreting information visually. Thus, as a data scientist, it is important to present this information in a way that accurately provides a clear visual representation of the data, and what the story behind the data is._
 

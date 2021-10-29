@@ -1,0 +1,17 @@
+format: jb-book
+root: README
+parts:
+  - caption: Getting started
+    chapters:
+    - file: docs/getting-started
+    - file: docs/how-to-contribute
+  - caption: AIOps projects
+    chapters:
+    - file: docs/aiops-projects
+    - file: docs/project-document-template
+    - file: docs/project-structure
+  - caption: Best Practices and Guidelines
+    chapters:
+    - file: docs/guidelines-for-reviewing-datascience-code.md
+    - file: docs/data-visualization-best-practices.md
+    - file: docs/create_and_deploy_jh_image.md

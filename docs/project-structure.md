@@ -1,4 +1,4 @@
-## Data Science Projects Structure for AI Ops -
+## Data Science Projects Structure for AI Ops
 
 The purpose of this document is to provide Data Scientists in the AI CoE with a template for structuring their projects as well as encouraging a more consistent workflow across projects that promotes an “operate first” mentality; testing and taking advantage of the capabilities the AI CoE has been developing, as well as to ensure that as data scientists, focused on developing intelligent applications for the cloud, we are working from a cloud-native data science mindset from the start.   
 

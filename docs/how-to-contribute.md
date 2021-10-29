@@ -1,10 +1,10 @@
-# **How to Contribute**
+## How to Contribute
 
 Please refer to this guide for information on how to contribute to our data science projects.
 
 We encourage contribution to each of our [Data Science Projects](https://www.operate-first.cloud/data-science). In order to start contributing to our projects you can check out the "How to Contribute" section for each project under https://www.operate-first.cloud/data-science/.
 
-## **GitHub Workflow**
+### **GitHub Workflow**
 
 1. Create an issue for every task you plan to work on.
 2. Add the issue to the *New* column of the corresponding project board.
@@ -16,7 +16,7 @@ We encourage contribution to each of our [Data Science Projects](https://www.ope
 6. Create a PR for the issue and reference the issue in the PR description.
 7. Let somebody from the team review the PR - never merge your own PRs.
 
-## **Contributing via Pull Requests**
+### **Contributing via Pull Requests**
 
 Contributions to another data science project take the form of pull requests (PRs) against that project’s GitHub repository. Here are the steps for contributing using PRs:
 
@@ -30,7 +30,7 @@ Contributions to another data science project take the form of pull requests (PR
 8. Wait for someone to review your PR. They may suggest or request changes to your PR before approving it.
 9. Once your PR is approved and merged into the repository, you can delete your branch. 
 
-## **Reviewing Pull Requests**
+### **Reviewing Pull Requests**
 
 Code reviews are common practice in the software engineering field and have been for some time. They provide developers with a well defined approach to sharing knowledge, ensuring exposure to new ideas and technologies, enforcing quality assurance of code and standards for the engineering process across both the code base and the team itself. As members of the AI CoE in the office of the CTO, we believe that having a well defined approach for how to do the same thing with data science and machine learning code is critical. Although, code is code, and we approach data science work as a subset of software engineering, there are some data science specific challenges associated with the code review process that should be addressed. Below are the 10 principles we use in our group to review data science work.
 
