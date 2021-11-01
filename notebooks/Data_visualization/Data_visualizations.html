@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examples of the Best Practices for Data Science Visualizations &#8212; Data Science Workflows</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Workflows</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Data Science Workflows
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/getting-started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/how-to-contribute.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  AIOps projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/aiops-projects.html">
+   AI Ops Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/project-document-template.html">
+   Project Outline Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/project-structure.html">
+   Data Science Projects Structure for AI Ops
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Best Practices and Guidelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/guidelines-for-reviewing-datascience-code.html">
+   10 Principles for Reviewing Data Science Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/data-visualization-best-practices.html">
+   Best Practices for Data Science Visualizations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/create_and_deploy_jh_image.html">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/Data_visualization/Data_visualizations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Data_visualization/Data_visualizations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href=" /v2/gh/aicoe-aiops/data-science-workflows/master?urlpath=lab/tree/notebooks/Data_visualization/Data_visualizations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/aicoe-aiops/data-science-workflows&urlpath=lab/tree/data-science-workflows/notebooks/Data_visualization/Data_visualizations.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Examples of the Best Practices for Data Science Visualizations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series">
+   Time Series
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#description">
+     <strong>
+      Description:
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-data">
+     Import Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogram">
+   Histogram
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <strong>
+      Description:
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scatter-plot">
+   Scatter Plot
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <strong>
+      Description:
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bar-chart">
+   Bar Chart
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <strong>
+      Description:
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pie-chart">
+   Pie Chart
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     <strong>
+      Description:
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="examples-of-the-best-practices-for-data-science-visualizations">
+<h1>Examples of the Best Practices for Data Science Visualizations<a class="headerlink" href="#examples-of-the-best-practices-for-data-science-visualizations" title="Permalink to this headline">¶</a></h1>
+<p><em>Visualizations are meant to supplement and provide clarity and insight into the claims being made about the data. People are generally not analytical and are naturally better at interpreting information visually. Thus, as a data scientist, it is important to present this information in a way that accurately provides a clear visual representation of the data, and what the story behind the data is.</em></p>
+<p>There are many different graphs that one can select in order to create a visualization based on their data type, and in this notebook we will explore five of the most common ones. These will include a time series, histogram, scatter plot, bar chart, and pie chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span> <span class="c1">#primary library used for our data science visualizations</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="time-series">
+<h1>Time Series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
+<p>A time series plot allows us to visualize changes that occur over time. The x-axis will be the time axis, and the y-axis contains the data that is being measured over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#create function to model ATP and glucose concentrations in glycolysis</span>
+<span class="n">k1</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">kp</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">km</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">vin</span> <span class="o">=</span> <span class="mf">0.36</span>
+<span class="n">atp</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="n">atp</span><span class="p">,</span> <span class="n">g</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">vin</span><span class="p">,</span> <span class="n">km</span><span class="p">):</span> 
+    <span class="n">atp</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dydt</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">2</span><span class="o">*</span><span class="n">k1</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">atp</span> <span class="o">-</span> <span class="p">((</span><span class="n">kp</span><span class="o">*</span><span class="n">atp</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">atp</span><span class="o">+</span><span class="n">km</span><span class="p">)),</span> <span class="n">vin</span> <span class="o">-</span> <span class="n">k1</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">atp</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">dydt</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">kp</span><span class="p">,</span> <span class="n">vin</span><span class="p">,</span> <span class="n">km</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0000e+00 1.0000e-02 2.0000e-02 ... 4.9997e+02 4.9998e+02 4.9999e+02]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">out</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;ATP&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">out</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Glucose&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Concentration over Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Data_visualizations_4_0.png" src="../../_images/Data_visualizations_4_0.png" />
+</div>
+</div>
+<div class="section" id="description">
+<h2><strong>Description:</strong><a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is being measured and plotted?</strong></p>
+<p>The Concentration over Time plot shows ATP and Glucose concentrations changing over time based on a two dimensional ODE model for these two molecules during glycolysis.</p>
+<p><strong>Why is it being measured and plotted?</strong></p>
+<p>The time series plot allows us to visualize the changes in concentration over time during glycolysis in order to better understand some of the driving forces in the biochemical reaction pathway.</p>
+<p><strong>Why is it important to visualize it specifically in the way it is being presented?</strong></p>
+<p>By plotting the ATP and glucose concentrations over time it is possible to visualize the dynamics of the glycolysis reaction, rather than purely looking at the steps of the biochemical reaction.</p>
+<p><strong>What insights can be made based on the plots?</strong></p>
+<p>The plot shows oscillatory behavior, where an increase in glucose concentration drives an increase in the ATP concentration. When the glucose concentration decreases, the ATP concentration also decreases with a short delay. Hence, the glucose concentration is what drives changes in the ATP concentration. The oscillations occur at the same frequency indicating that glucose and ATP concentrations are paired/dependent on each other.</p>
+<p><strong>Key Things to Note:</strong>
+Title, axis labels, units, legend</p>
+</div>
+<div class="section" id="import-data">
+<h2>Import Data<a class="headerlink" href="#import-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import and preview the data</span>
+<span class="n">bike</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Bike.csv&quot;</span><span class="p">)</span>
+<span class="n">bike</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trip_id</th>
+      <th>start_time</th>
+      <th>end_time</th>
+      <th>bikeid</th>
+      <th>tripduration</th>
+      <th>from_station_id</th>
+      <th>from_station_name</th>
+      <th>to_station_id</th>
+      <th>to_station_name</th>
+      <th>usertype</th>
+      <th>gender</th>
+      <th>birthyear</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25317046</td>
+      <td>10/7/19 13:39</td>
+      <td>10/7/19 14:05</td>
+      <td>4231</td>
+      <td>1533.0</td>
+      <td>424</td>
+      <td>Museum of Science and Industry</td>
+      <td>355</td>
+      <td>South Shore Dr &amp; 67th St</td>
+      <td>Customer</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25577704</td>
+      <td>10/27/19 16:44</td>
+      <td>10/27/19 16:49</td>
+      <td>523</td>
+      <td>283.0</td>
+      <td>345</td>
+      <td>Lake Park Ave &amp; 56th St</td>
+      <td>423</td>
+      <td>University Ave &amp; 57th St</td>
+      <td>Subscriber</td>
+      <td>Male</td>
+      <td>1989.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25823341</td>
+      <td>12/4/19 17:24</td>
+      <td>12/4/19 17:32</td>
+      <td>376</td>
+      <td>486.0</td>
+      <td>423</td>
+      <td>University Ave &amp; 57th St</td>
+      <td>419</td>
+      <td>Lake Park Ave &amp; 53rd St</td>
+      <td>Subscriber</td>
+      <td>Male</td>
+      <td>1993.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25735449</td>
+      <td>11/19/19 18:32</td>
+      <td>11/19/19 18:35</td>
+      <td>5708</td>
+      <td>174.0</td>
+      <td>248</td>
+      <td>Woodlawn Ave &amp; 55th St</td>
+      <td>322</td>
+      <td>Kimbark Ave &amp; 53rd St</td>
+      <td>Subscriber</td>
+      <td>Male</td>
+      <td>1998.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>25716762</td>
+      <td>11/16/19 21:09</td>
+      <td>11/16/19 21:19</td>
+      <td>1993</td>
+      <td>633.0</td>
+      <td>322</td>
+      <td>Kimbark Ave &amp; 53rd St</td>
+      <td>426</td>
+      <td>Ellis Ave &amp; 60th St</td>
+      <td>Subscriber</td>
+      <td>Male</td>
+      <td>2001.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#cleaning divvy bike data</span>
+<span class="n">bikeND</span> <span class="o">=</span> <span class="n">bike</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">bikeND</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;from_station_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;University Ave &amp; 57th St&#39;</span>
+<span class="n">bikeND</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">175</span><span class="p">,</span> <span class="s1">&#39;from_station_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Ellis Ave &amp; 53rd St&#39;</span>
+<span class="n">bikeND</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;to_station_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Ellis Ave &amp; 60th St&#39;</span>
+<span class="n">bikeND</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">276</span><span class="p">,</span> <span class="s1">&#39;to_station_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;University Ave &amp; 57th St&#39;</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="histogram">
+<h1>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h1>
+<p>A histogram allows us to see a frequency distribution of the data. The width of the rectangles reflects the interval by which all the data was divided (‘bins’), and the height represents the frequency at which those values occur in the data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_nas</span> <span class="o">=</span> <span class="n">bikeND</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">college</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">no_nas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">college</span><span class="p">[</span><span class="n">no_nas</span><span class="o">.</span><span class="n">birthyear</span><span class="o">&lt;</span><span class="mi">1997</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span> <span class="c1">#not college</span>
+<span class="n">college</span><span class="p">[</span><span class="n">no_nas</span><span class="o">.</span><span class="n">birthyear</span><span class="o">&gt;</span><span class="mi">2001</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span> <span class="c1">#not college</span>
+<span class="n">no_nas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;college&#39;</span><span class="p">,</span> <span class="n">college</span><span class="p">)</span>
+<span class="n">no_nas</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">students</span> <span class="o">=</span> <span class="n">no_nas</span><span class="p">[</span><span class="n">no_nas</span><span class="o">.</span><span class="n">college</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">notstud</span> <span class="o">=</span> <span class="n">no_nas</span><span class="p">[</span><span class="n">no_nas</span><span class="o">.</span><span class="n">college</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">students</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s1">&#39;tripduration&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frequency of Trip Duration for College Students&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Trip Duration (sec)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Data_visualizations_10_0.png" src="../../_images/Data_visualizations_10_0.png" />
+</div>
+</div>
+<div class="section" id="id1">
+<h2><strong>Description:</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is being measured and plotted?</strong></p>
+<p>The histogram above shows ride trip duration for college students.</p>
+<p><strong>Why is it being measured and plotted?</strong></p>
+<p>We are interested in seeing the distribution of trip duration to understand how long most trips are for college students.</p>
+<p><strong>Why is it important to visualize it specifically in the way it is being presented?</strong></p>
+<p>By visualizing the data as a histogram it is possible to see the distribution of the trip durations therefore providing a visual summary of the continuous duration data.</p>
+<p><strong>What insights can be made based on the plots?</strong></p>
+<p>The histogram is skewed to the right which means that college students take more shorter trips than longer trips. The distribution appears to be centered around 250 seconds or about 4 minutes. Overall, this makes sense because college students would most likely be using the bikes for short trips around campus or to surrounding stores in the area.</p>
+<p><strong>Key Things to Note:</strong>
+Title, axis labels, units, grid lines</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="scatter-plot">
+<h1>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h1>
+<p>A scatter plot can be used to visualize the relationship (and possible correlation) between numerical variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculating Age v Trip Duration</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">2021</span><span class="o">-</span><span class="n">no_nas</span><span class="o">.</span><span class="n">birthyear</span>
+<span class="n">no_nas</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">no_nas</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">no_nas</span><span class="o">.</span><span class="n">tripduration</span><span class="o">/</span><span class="mi">60</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">125</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Trip Duration (min)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trip Duration v Age&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Data_visualizations_14_0.png" src="../../_images/Data_visualizations_14_0.png" />
+</div>
+</div>
+<div class="section" id="id2">
+<h2><strong>Description:</strong><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is being measured and plotted?</strong></p>
+<p>The data consists of Chicago Divvy Bike data from Spring 2019 centered around Hyde Park. The plot above shows the total trip duration in minutes vs age of the rider.</p>
+<p><strong>Why is it being measured and plotted?</strong></p>
+<p>We are interested in seeing if there is a relationship between trip duration and the rider’s age.</p>
+<p><strong>Why is it important to visualize it specifically in the way it is being presented?</strong></p>
+<p>The scatter plot allows us to see if there is any correlation between trip duration and age.</p>
+<p><strong>What insights can be made based on the plots?</strong></p>
+<p>Based on the plot, we can see that there does appear to be any strong correlation between trip duration and age, since most rides fall under 20 minutes across all ages. Furthermore, longer rides (20+ minutes) are also spread out among all ages, although there are less of them.</p>
+<p><strong>Key Things to Note:</strong>
+Title, axis labels, point size</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="bar-chart">
+<h1>Bar Chart<a class="headerlink" href="#bar-chart" title="Permalink to this headline">¶</a></h1>
+<p>Bar charts allow us to visualize categorical data, where each bar has a height proportional to the data’s value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">bikeND</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">day_name</span><span class="p">()</span>
+<span class="n">bikeND</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;weekday&#39;</span><span class="p">,</span> <span class="n">dow</span><span class="p">)</span>
+<span class="n">downum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">bikeND</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dayofweek</span>
+<span class="n">bikeND</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;weekday_num&#39;</span><span class="p">,</span> <span class="n">downum</span><span class="p">)</span>
+
+<span class="n">dow_mean</span> <span class="o">=</span> <span class="n">bikeND</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;weekday_num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dow_mean</span><span class="p">[</span><span class="s1">&#39;Week Day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;Tu&#39;</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;Th&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Sa&#39;</span><span class="p">,</span> <span class="s1">&#39;Su&#39;</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">dow_mean</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Week Day&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;tripduration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Trip Duration (sec)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Trip Duration by Day of the Week&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Data_visualizations_18_0.png" src="../../_images/Data_visualizations_18_0.png" />
+</div>
+</div>
+<div class="section" id="id3">
+<h2><strong>Description:</strong><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is being measured and plotted?</strong></p>
+<p>Chicago Divvy Bike data was grouped by days of the week and the average trip duration was calculated for each weekday.</p>
+<p><strong>Why is it being measured and plotted?</strong></p>
+<p>We are interested in seeing the lengths of trips based on days of the week - what day of the week do riders take the shortest or longest rides.</p>
+<p><strong>Why is it important to visualize it specifically in the way it is being presented?</strong></p>
+<p>The bar chart allows us to visualize the mean trip duration (numerical) over different days of the week (categorical).</p>
+<p><strong>What insights can be made based on the plots?</strong></p>
+<p>Based on the bar chart above, Wednesday’s, on average, have the shortest bike trips, while Saturday’s have the longest trips.</p>
+<p><strong>Key Things to Note:</strong>
+Title, axis labels, units, scaling</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="pie-chart">
+<h1>Pie Chart<a class="headerlink" href="#pie-chart" title="Permalink to this headline">¶</a></h1>
+<p>A pie chart divides the data into ‘slices’, where each data slice is a numerical proportion of the whole data set. This allows us to visualize the data parts relative to the overall data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_count</span> <span class="o">=</span> <span class="n">bikeND</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;to_station_name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">s_count_top</span> <span class="o">=</span> <span class="n">s_count</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">other</span> <span class="o">=</span> <span class="n">s_count</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">11</span><span class="p">:</span><span class="mi">66</span><span class="p">]</span>
+<span class="n">sum_other</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">other</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])</span>
+<span class="n">other_row</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;to_station_name&#39;</span><span class="p">:</span><span class="s1">&#39;Other&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">sum_other</span><span class="p">}</span>
+<span class="n">s_count_top</span> <span class="o">=</span> <span class="n">s_count_top</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">other_row</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">explode</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">s_count_top</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">s_count_top</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">s_count_top</span><span class="p">[</span><span class="s1">&#39;to_station_name&#39;</span><span class="p">],</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> \
+        <span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bike Destination Breakdown&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Data_visualizations_22_0.png" src="../../_images/Data_visualizations_22_0.png" />
+</div>
+</div>
+<div class="section" id="id4">
+<h2><strong>Description:</strong><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><strong>What is being measured and plotted?</strong></p>
+<p>The top bike trip destinations are plotted in a pie chart.</p>
+<p><strong>Why is it being measured and plotted?</strong></p>
+<p>We are interested in viewing the breakdown of bike destinations. It provides insight into which stations are more popular.</p>
+<p><strong>Why is it important to visualize it specifically in the way it is being presented?</strong></p>
+<p>The pie chart allows us to have a visual representation of all the destinations as parts of a whole.</p>
+<p><strong>What insights can be made based on the plots?</strong></p>
+<p>The most popular divvy bike destination was University Ave and 57th street which is actually the center of the University of Chicago campus.</p>
+<p><strong>Key Things to Note:</strong>
+Title, labels (location - categorical, percentages - numerical)</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<p>The five examples above are just a few of the types of visualizations one can use to display data. Hopefully they can help you make stronger and more clear data visualizations, as well as inspire you to explore the many other types of ways to visualize data.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/Data_visualization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By AIOps<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

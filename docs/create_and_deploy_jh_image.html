@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to create a JupyterHub image and deploy it on ODH &#8212; Data Science Workflows</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Best Practices for Data Science Visualizations" href="data-visualization-best-practices.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Workflows</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Data Science Workflows
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting-started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-contribute.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  AIOps projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="aiops-projects.html">
+   AI Ops Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="project-document-template.html">
+   Project Outline Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="project-structure.html">
+   Data Science Projects Structure for AI Ops
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Best Practices and Guidelines
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="guidelines-for-reviewing-datascience-code.html">
+   10 Principles for Reviewing Data Science Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-visualization-best-practices.html">
+   Best Practices for Data Science Visualizations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/create_and_deploy_jh_image.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows/issues/new?title=Issue%20on%20page%20%2Fdocs/create_and_deploy_jh_image.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#build-an-image">
+     Build an image
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#steps-to-have-your-notebook-repo-build-into-an-image-by-thoth">
+       Steps to have your notebook repo build into an image by Thoth
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#enable-the-ci-integration">
+       Enable the CI integration
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#setting-up-the-image-repository">
+       Setting up the image repository
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#adding-configuration-file-to-your-repo">
+       Adding configuration file to your repo
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#triggering-the-build">
+       Triggering the build
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-and-debugging-the-build">
+     Checking and debugging the build
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-the-image-where-you-need-it">
+   Adding the image where you need it
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-an-imagestream">
+     Creating an ImageStream
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-create-a-jupyterhub-image-and-deploy-it-on-odh">
+<h1>How to create a JupyterHub image and deploy it on ODH<a class="headerlink" href="#how-to-create-a-jupyterhub-image-and-deploy-it-on-odh" title="Permalink to this headline">¶</a></h1>
+<p>This how-to is about getting your repository built into an image and having that image made available in (your) JupyterHub instance.</p>
+<p>We are going to deal with 2 issues:</p>
+<ol class="simple">
+<li><p>Build an image and add to a public image repository.</p></li>
+<li><p>Add your image to an ODH instance (that has a JupyterHub in it).</p></li>
+</ol>
+<p>If you want to see a video walkthrough of this guide with an example project, please check out the video below:</p>
+<p><code class="docutils literal notranslate"><span class="pre">video:</span> <span class="pre">https://www.youtube.com/watch?v=R61i15hb4B0&amp;feature=youtu.be</span></code></p>
+<p>If you don’t have an ODH instance that you would like to work with, you can create one using these guides:</p>
+<p><a class="reference external" href="https://github.com/operate-first/continuous-deployment/tree/master/docs">https://github.com/operate-first/continuous-deployment/tree/master/docs</a></p>
+<div class="section" id="build-an-image">
+<h2>Build an image<a class="headerlink" href="#build-an-image" title="Permalink to this headline">¶</a></h2>
+<p>If your image is not yet built, you can use <a class="reference external" href="https://thoth-station.ninja/">Thoth</a> to do it for you using a config file in your repo.</p>
+<p>Here’s an example that goes together with the above example of an ImageStream:</p>
+<p><a class="reference external" href="https://github.com/aicoe-aiops/categorical-encoding/blob/master/.aicoe-ci.yaml">https://github.com/aicoe-aiops/categorical-encoding/blob/master/.aicoe-ci.yaml</a></p>
+<p>I am going to compile this into a guide and would be grateful for your testing of the process or improvement suggestions.</p>
+<p>Information on enabling Thoth on your repo is here: <a class="reference external" href="https://github.com/AICoE/aicoe-ci#setting-aicoe-ci-on-github-organizationrepository">https://github.com/AICoE/aicoe-ci#setting-aicoe-ci-on-github-organizationrepository</a></p>
+<p>For 3rd party projects outside of the AICoE, one should change the value of <code class="docutils literal notranslate"><span class="pre">registry-org</span></code> (<a class="reference external" href="http://quay.io">quay.io</a> org) to his own value.</p>
+<div class="section" id="steps-to-have-your-notebook-repo-build-into-an-image-by-thoth">
+<h3>Steps to have your notebook repo build into an image by Thoth<a class="headerlink" href="#steps-to-have-your-notebook-repo-build-into-an-image-by-thoth" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="enable-the-ci-integration">
+<h3>Enable the CI integration<a class="headerlink" href="#enable-the-ci-integration" title="Permalink to this headline">¶</a></h3>
+<p>To get image built by Thoth (in Tekton?) (not sure what is the right formulation here) and uploaded to <a class="reference external" href="http://quay.io">quay.io</a> (image registry) one needs to add the “aicoe-ci” app to the project:</p>
+<p><img alt="Setting up CI integration with Thoth" src="../_images/ci-integration.png" /></p>
+<p>If your project is under the <code class="docutils literal notranslate"><span class="pre">aicoe-aiops</span></code> (and some other) GH orgs then this is already done on the org level and you don’t need to do this step.</p>
+</div>
+<div class="section" id="setting-up-the-image-repository">
+<h3>Setting up the image repository<a class="headerlink" href="#setting-up-the-image-repository" title="Permalink to this headline">¶</a></h3>
+<p>Next you need to have a place to upload the built images. For that you need an account and a project on <a class="reference external" href="http://quay.io">quay.io</a>.</p>
+<p>Again there already exists an ‘AICoE’ organization in Quay: <a class="reference external" href="https://quay.io/organization/aicoe">https://quay.io/organization/aicoe</a> so if your project is part of AICoE you can use that.</p>
+<p>Thoth needs to be able to access your project – push images into it. That can be accomplished by creating a robot account with a push (pull) secret.</p>
+<p>There are pre-configured push secrets for various projects already present in Thoth. See the bottom of this page: <a class="reference external" href="https://github.com/AICoE/aicoe-ci#services-and-features">https://github.com/AICoE/aicoe-ci#services-and-features</a>.</p>
+<p>If your project is in one of these, you can skip this step.</p>
+<p><img alt="Quay pull secret setup" src="../_images/quay-robot.png" /></p>
+<p>After creating the robot you need to set the permissions it will possess.</p>
+<p><img alt="Quay: setup permissions" src="../_images/quay-secret.png" /></p>
+<p>And finally, you need to copy the secret and give it to Thoth. Copy the secret here:</p>
+<p><img alt="quay-robot-2" src="../_images/quay-secret-cred.png" /></p>
+<p>This is currently a manual process so just, please, send the secret (the whole yaml) to &#64;harshad16 to have it added.</p>
+<p>Remember, this is only if you actually need new push secret. That is if Thoth does not have it already preconfigured.</p>
+</div>
+<div class="section" id="adding-configuration-file-to-your-repo">
+<h3>Adding configuration file to your repo<a class="headerlink" href="#adding-configuration-file-to-your-repo" title="Permalink to this headline">¶</a></h3>
+<p>Next we need to finish configuration of the source repo. This is done by adding a config file named <code class="docutils literal notranslate"><span class="pre">.aicoe-ci.yaml</span></code>.</p>
+<p>Here’s an example of a working minimal config: <a class="reference external" href="https://github.com/aicoe-aiops/project-template/blob/master/.aicoe-ci.yaml">https://github.com/aicoe-aiops/project-template/blob/master/.aicoe-ci.yaml</a></p>
+<p>Uncomment the <code class="docutils literal notranslate"><span class="pre">build</span></code> section to enable Thoth build.</p>
+<p>The builder can do a number of things. To have the S2I correctly build these 2 lines are essential:</p>
+<p>The important parts for building the image using S2I into a format expected by JH is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">build</span><span class="o">-</span><span class="n">source</span><span class="o">-</span><span class="n">script</span><span class="p">:</span> <span class="s2">&quot;image:///opt/app-root/builder&quot;</span>
+  <span class="n">base</span><span class="o">-</span><span class="n">image</span><span class="p">:</span> <span class="n">quay</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">thoth</span><span class="o">-</span><span class="n">station</span><span class="o">/</span><span class="n">s2i</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">notebook</span><span class="p">:</span><span class="n">latest</span>
+</pre></div>
+</div>
+<p>Modify the lines in the <code class="docutils literal notranslate"><span class="pre">build</span></code> section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">registry</span><span class="o">-</span><span class="n">org</span><span class="p">:</span> <span class="n">aicoe</span>
+  <span class="n">registry</span><span class="o">-</span><span class="n">project</span><span class="p">:</span> <span class="n">my_project</span>
+  <span class="n">registry</span><span class="o">-</span><span class="n">secret</span><span class="p">:</span> <span class="n">aicoe</span><span class="o">-</span><span class="n">pusher</span><span class="o">-</span><span class="n">secret</span>
+</pre></div>
+</div>
+<p>to match the project and robot’s push secret you have setup in Quay.</p>
+</div>
+<div class="section" id="triggering-the-build">
+<h3>Triggering the build<a class="headerlink" href="#triggering-the-build" title="Permalink to this headline">¶</a></h3>
+<p>Once you have this in your repo. You can trigger the build by doing a release. This is something that will be done for you automatically if you are using the whole Thoth toolset. But for minimal working setup, you can create a release manually.</p>
+<p><img alt="Trigger a build in GH" src="../_images/gh-tag.png" /></p>
+<p><img alt="Do a release in GH" src="../_images/gh-release.png" /></p>
+<p>If you have done these steps correctly, Thoth will pick up your tag and run a image build for you.</p>
+</div>
+</div>
+<div class="section" id="checking-and-debugging-the-build">
+<h2>Checking and debugging the build<a class="headerlink" href="#checking-and-debugging-the-build" title="Permalink to this headline">¶</a></h2>
+<p>You can login to <a class="reference external" href="https://tekton.operate-first.cloud/#/namespaces/opf-ci-pipelines/pipelineruns">https://tekton.operate-first.cloud/#/namespaces/opf-ci-pipelines/pipelineruns</a> and find your build by using the search field. Enter “project:&lt;YOUR_REPO_NAME&gt;”.</p>
+<p><img alt="Tekton: search a build" src="../_images/thoth-pipeline-run.png" /></p>
+<p>The part that is relevant for image building is under “tag-release-run”. There may by other sections that are red, but if this part is green the image was built and pushed. You can also check that on <a class="reference external" href="http://Quay.io">Quay.io</a>.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="adding-the-image-where-you-need-it">
+<h1>Adding the image where you need it<a class="headerlink" href="#adding-the-image-where-you-need-it" title="Permalink to this headline">¶</a></h1>
+<p>Once your image is built (check in Quay), you can use it in your instance of ODH.</p>
+<div class="section" id="creating-an-imagestream">
+<h2>Creating an ImageStream<a class="headerlink" href="#creating-an-imagestream" title="Permalink to this headline">¶</a></h2>
+<p>This is done using a manifest of type <code class="docutils literal notranslate"><span class="pre">ImageStream</span></code>.</p>
+<p>Here is an example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>  <span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">image.openshift.io/v1</span>
+  <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ImageStream</span>
+  <span class="nt">metadata</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">categorical-encoding-notebook</span>
+    <span class="nt">labels</span><span class="p">:</span>
+      <span class="nt">opendatahub.io/notebook-image</span><span class="p">:</span> <span class="s">&quot;true&quot;</span>
+    <span class="nt">annotations</span><span class="p">:</span>
+      <span class="nt">opendatahub.io/notebook-image-url</span><span class="p">:</span>
+        <span class="s">&quot;https://github.com/aicoe-aiops/categorical-encoding&quot;</span>
+      <span class="nt">opendatahub.io/notebook-image-name</span><span class="p">:</span>
+        <span class="s">&quot;Categorical</span><span class="nv"> </span><span class="s">Encoding</span><span class="nv"> </span><span class="s">Notebook</span><span class="nv"> </span><span class="s">Image&quot;</span>
+      <span class="nt">opendatahub.io/notebook-image-desc</span><span class="p">:</span>
+        <span class="s">&quot;Jupyter</span><span class="nv"> </span><span class="s">notebook</span><span class="nv"> </span><span class="s">image</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">categorical</span><span class="nv"> </span><span class="s">encoding</span><span class="nv"> </span><span class="s">examples&quot;</span>
+  <span class="nt">spec</span><span class="p">:</span>
+    <span class="nt">lookupPolicy</span><span class="p">:</span>
+      <span class="nt">local</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">tags</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">annotations</span><span class="p">:</span>
+          <span class="nt">openshift.io/imported-from</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">quay.io/aicoe/categorical-encoding</span>
+        <span class="nt">from</span><span class="p">:</span>
+          <span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">DockerImage</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">quay.io/aicoe/categorical-encoding:latest</span>
+        <span class="nt">importPolicy</span><span class="p">:</span>
+          <span class="nt">scheduled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="s">&quot;latest&quot;</span>
+</pre></div>
+</div>
+<p>The important part is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">labels</span><span class="p">:</span>
+    <span class="n">opendatahub</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">notebook</span><span class="o">-</span><span class="n">image</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span>
+</pre></div>
+</div>
+<p>This tells JupyterHub that it has to offer this particular image then creating an instance for it’s users.</p>
+<p>Depending on where you want to use your image, you have to place the manifest into the right place or load in into your project using <code class="docutils literal notranslate"><span class="pre">oc</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">&lt;image_file.yaml&gt;</span></code>.</p>
+<p>For example</p>
+<ul class="simple">
+<li><p>If you want to add your image to Operate First, you need to add the <code class="docutils literal notranslate"><span class="pre">ImageStream</span></code> manifest to the correct path in this <a class="reference external" href="https://github.com/operate-first/apps">repo</a>:</p>
+<ul>
+<li><p>in <a class="reference external" href="https://github.com/operate-first/apps/tree/master/kfdefs/base/jupyterhub/notebook-images">kfdefs/base/jupyterhub/notebook-images</a> where <code class="docutils literal notranslate"><span class="pre">base</span></code> in the overlays concept means that this image will be applied to all instances/overlays that have JupyterHub. In this case you can open a similar <a class="reference external" href="https://github.com/operate-first/apps/pull/411/files">Pull Request</a>.</p></li>
+<li><p>in <a class="reference external" href="https://github.com/operate-first/apps/tree/master/kfdefs/overlays">kfdefs/overlays</a> you will find all instances maintained by ArgoCD and you can choose to add the image only to a specific instance/overlay and not to all. In this case you can open a similar <a class="reference external" href="https://github.com/operate-first/apps/pull/1148/files">Pull Request</a> (e.g. if you need to add an image to <code class="docutils literal notranslate"><span class="pre">osc</span></code> overlay). NOTE: <em><code class="docutils literal notranslate"><span class="pre">overlay</span></code> concept is used also to override manifests from <code class="docutils literal notranslate"><span class="pre">base</span></code>, for example if you want a different image version in a specific <code class="docutils literal notranslate"><span class="pre">overlay</span></code>.</em></p></li>
+</ul>
+</li>
+<li><p>If you need to add your image to the internal DH (ODH instance run by DH team), make a PR against the <code class="docutils literal notranslate"><span class="pre">production</span></code> branch here:
+<a class="reference external" href="https://github.com/AICoE/idh-manifests/blob/production/jupyterhub/bases/custom-images/jupyterhub-custom-images.yaml">https://github.com/AICoE/idh-manifests/blob/production/jupyterhub/bases/custom-images/jupyterhub-custom-images.yaml</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="data-visualization-best-practices.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Best Practices for Data Science Visualizations</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By AIOps<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

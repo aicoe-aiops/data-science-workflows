@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started &#8212; Data Science Workflows</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How to Contribute" href="how-to-contribute.html" />
+    <link rel="prev" title="Data Science Workflows" href="../README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Workflows</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Data Science Workflows
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-contribute.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  AIOps projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="aiops-projects.html">
+   AI Ops Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="project-document-template.html">
+   Project Outline Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="project-structure.html">
+   Data Science Projects Structure for AI Ops
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Best Practices and Guidelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="guidelines-for-reviewing-datascience-code.html">
+   10 Principles for Reviewing Data Science Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-visualization-best-practices.html">
+   Best Practices for Data Science Visualizations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_and_deploy_jh_image.html">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/getting-started.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows/issues/new?title=Issue%20on%20page%20%2Fdocs/getting-started.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-a-project-document">
+   <strong>
+    Define a Project Document
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-git-repository-from-a-template">
+   <strong>
+    Create Git Repository from a Template
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-aicoe-continuous-integration-ci">
+   <strong>
+    Set Up AICoE Continuous Integration (CI)
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-project-boards-and-issues">
+   <strong>
+    Create Project Boards and Issues
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#develop-on-operate-first-jupyterhub">
+   <strong>
+    Develop on Operate First Jupyterhub
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managing-dependencies">
+   <strong>
+    Managing Dependencies
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deliverables">
+   <strong>
+    Deliverables
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-jupyterhub-images">
+   <strong>
+    Creating Jupyterhub Images
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-automated-model-workflows">
+   <strong>
+    Creating Automated Model Workflows
+   </strong>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Please use the following outline to get started with a new Data Science Project. If you run into any problems or need additional support, please join our <a class="reference external" href="https://operatefirst.slack.com/ssb/redirect">slack</a> and post a message in the <code class="docutils literal notranslate"><span class="pre">#support</span></code> channel, or open an issue <a class="reference external" href="https://github.com/operate-first/support/issues">here</a>.</p>
+<div class="section" id="define-a-project-document">
+<h2><strong>Define a Project Document</strong><a class="headerlink" href="#define-a-project-document" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Review our project workflow document <a class="reference external" href="https://docs.google.com/document/d/1LqVXQbd81IdPfoXw2B0iCcnb-ygCVvdy_8vejY08zZ4/edit">here</a>.</p></li>
+<li><p>Create a new project description using our <a class="reference external" href="https://docs.google.com/document/d/1CIFlKiVbNX3CKC-tD7kVDkP1S8eDfDEibdLM6jgIj2g/edit">template</a>. For reference, you can review an example project document <a class="reference external" href="https://docs.google.com/document/d/1prfyxHAQq60IU_K_f-eTNVCB6FKV2q00YAbmY-jI_HE/edit">here</a>.</p></li>
+<li><p>Put your project document into a subfolder of this <a class="reference external" href="https://drive.google.com/drive/folders/17nhASQZUbGISFQswUb-ft3V1dxbD7dtX">shared directory</a>.</p></li>
+</ol>
+</div>
+<div class="section" id="create-git-repository-from-a-template">
+<h2><strong>Create Git Repository from a Template</strong><a class="headerlink" href="#create-git-repository-from-a-template" title="Permalink to this headline">¶</a></h2>
+<p>Next, create a <a class="reference external" href="https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science">CookieCutter</a> formatted data science project repository from this <a class="reference external" href="https://github.com/aicoe-aiops/project-template">template</a>. To do so, please follow these <a class="reference external" href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template">instructions</a> for creating a new repository from a template.</p>
+</div>
+<div class="section" id="set-up-aicoe-continuous-integration-ci">
+<h2><strong>Set Up AICoE Continuous Integration (CI)</strong><a class="headerlink" href="#set-up-aicoe-continuous-integration-ci" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/aicoe/aicoe-ci#getting-started">AICoE-CI</a> can aid various aspects of a development workflow such as running pre-commit checks, build checks, triggering pipelines to build images, etc.</p>
+<p>For more information on AICoE CI and how to set it up for your project, you can follow the documentation <a class="reference external" href="https://github.com/aicoe/aicoe-ci#getting-started">here</a>.</p>
+</div>
+<div class="section" id="create-project-boards-and-issues">
+<h2><strong>Create Project Boards and Issues</strong><a class="headerlink" href="#create-project-boards-and-issues" title="Permalink to this headline">¶</a></h2>
+<p>You can create Issues to highlight new features, bugs and break upcoming goals of a project into smaller chunks. You can create GitHub <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues">Issues</a> and include <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/about-task-lists">Task Lists</a> for each task that you plan to work on.</p>
+<p>Here is an <a class="reference external" href="https://github.com/aicoe-aiops/ocp-ci-analysis/issues/279">example Issue</a> that we created to highlight a certain task for our project.</p>
+<p>We use <a class="reference external" href="https://docs.github.com/en/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards">project boards</a> to organize the tasks within the team.</p>
+<p>Once your project board is created, begin to create issues and populate the board with them</p>
+<ul class="simple">
+<li><p>Create an issue for every task you plan to work on</p>
+<ul>
+<li><p>Break issues down into smaller pieces if they cannot be completed in a single sprint</p></li>
+<li><p>Be specific in the description of the issue</p></li>
+<li><p>Tag other related issues with a ‘#’ as necessary</p></li>
+<li><p>Provide acceptance criteria for when the issue can be closed</p></li>
+<li><p>Assign yourself or your teammates who you plan to work with on the task to the issue</p></li>
+</ul>
+</li>
+<li><p>Add the issues to the <em>New</em> column of you project board</p></li>
+<li><p>When you’re almost ready to begin working on an issue, move it to the <em>To Do</em> column</p></li>
+<li><p>Once you start work on an issue, move it to the <em>In Progress</em> column</p></li>
+</ul>
+<p>For more information of the remainder of our GitHub workflow, please visit <span class="xref myst">this page</span>.</p>
+</div>
+<div class="section" id="develop-on-operate-first-jupyterhub">
+<h2><strong>Develop on Operate First Jupyterhub</strong><a class="headerlink" href="#develop-on-operate-first-jupyterhub" title="Permalink to this headline">¶</a></h2>
+<p>The following resources are available for use to develop your project on the Operate First JupyterHub instance:</p>
+<ul class="simple">
+<li><p><strong>Start developing on the Operate First JupyterHub environment</strong></p>
+<ul>
+<li><p>View the <a class="reference external" href="https://www.youtube.com/watch?v=iI_-lqi3vP4&amp;list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&amp;index=3&amp;t=13s">video tutorial</a></p></li>
+<li><p>Access the public <a class="reference external" href="https://oauth-openshift.apps.zero.massopen.cloud/oauth/authorize?response_type=code&amp;redirect_uri=https%3A%2F%2Fjupyterhub-opf-jupyterhub.apps.zero.massopen.cloud%2Fhub%2Foauth_callback&amp;client_id=system%3Aserviceaccount%3Aopf-jupyterhub%3Ajupyterhub-hub&amp;state=eyJzdGF0ZV9pZCI6ICI0NjQzNjI0NDY5OTY0MmUxOWJhMzM5OTA0ZDZhZDcwZiIsICJuZXh0X3VybCI6ICIvaHViLyJ9&amp;scope=user%3Ainfo">JupyterHub instance</a> on the Massachusetts Open Cloud (MOC) by selecting moc-sso and then signing in with your Google Account</p></li>
+</ul>
+</li>
+<li><p><strong>How to Monitor JupyterHub workloads using Grafana dashboards</strong></p>
+<ul>
+<li><p>(Video tutorial forthcoming)</p></li>
+<li><p>To troubleshoot issues while running your notebooks, you can refer to the <a class="reference external" href="https://www.operate-first.cloud/users/sre/runbooks/jupyterhub.md">Troubleshooting Runbooks</a></p></li>
+<li><p>You can refer the existing <a class="reference external" href="https://www.google.com/url?q=https://grafana-route-opf-monitoring.apps.zero.massopen.cloud/d/24cc5f554da78f3ca60a40f190f7e23203f7d847/jupyterhub-usage?orgId%3D1%26from%3Dnow-3h%26to%3Dnow%26var-datasource%3Dopf-observatorium-thanos%26var-user_id%3Dochatter-40redhat-2ecom%26var-namespace%3Dopf-jupyterhub&amp;sa=D&amp;source=editors&amp;ust=1627309997546000&amp;usg=AOvVaw3CaL9UuS0xpAmAOwxAZCrS">Grafana dashboard</a> for monitoring your Jupyterhub workloads such as CPU, RAM usage, percentage PVC usage.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="managing-dependencies">
+<h2><strong>Managing Dependencies</strong><a class="headerlink" href="#managing-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Guidance for managing notebook dependencies can be found in this <a class="reference external" href="https://www.youtube.com/watch?v=ifyQ2oSxjnU&amp;list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&amp;index=4">video</a>. The repository for our dependency management tool can be found <a class="reference external" href="https://www.google.com/url?q=https://github.com/thoth-station/jupyterlab-requirements&amp;sa=D&amp;source=editors&amp;ust=1627073082597000&amp;usg=AOvVaw0ZMXjgL0ryYJC5hkIMJhNS">here</a>.</p>
+</div>
+<div class="section" id="deliverables">
+<h2><strong>Deliverables</strong><a class="headerlink" href="#deliverables" title="Permalink to this headline">¶</a></h2>
+<p>Here are potential ways to contribute and showcase work you have completed.</p>
+<ul class="simple">
+<li><p>Slide decks</p></li>
+<li><p>Blog posts (<a class="reference external" href="https://www.operate-first.cloud/data-science/configuration-files-analysis/docs/blog/configuration-file-analysis-blog.md">example</a>)</p></li>
+<li><p>Videos (<a class="reference external" href="https://www.youtube.com/watch?v=BKnF174eZN0&amp;list=PL8VBRDTElCWoGwMhCp04rQFMcIhshv33U&amp;index=9">example</a>)</p></li>
+<li><p>Tutorials (<a class="reference external" href="https://www.operate-first.cloud/data-science/ocp-ci-analysis/docs/automating-using-elyra.md">example</a>)</p></li>
+<li><p>Content images</p></li>
+<li><p>Project Repositories (<a class="reference external" href="https://github.com/aicoe-aiops/ocp-ci-analysis">example</a>)</p></li>
+<li><p>Dashboards</p></li>
+<li><p>Model Services</p></li>
+</ul>
+</div>
+<div class="section" id="creating-jupyterhub-images">
+<h2><strong>Creating Jupyterhub Images</strong><a class="headerlink" href="#creating-jupyterhub-images" title="Permalink to this headline">¶</a></h2>
+<p>JH images can be made from your projects to easily share reproducible ML experiments and create interactive Data Science working environments. Please refer to the following <a class="reference external" href="https://www.operate-first.cloud/users/data-science-workflows/docs/create_and_deploy_jh_image.md">guide</a> for more information.</p>
+</div>
+<div class="section" id="creating-automated-model-workflows">
+<h2><strong>Creating Automated Model Workflows</strong><a class="headerlink" href="#creating-automated-model-workflows" title="Permalink to this headline">¶</a></h2>
+<p>To automate your notebook workflows using Elyra and Kubeflow Pipelines on Open Data Hub, you can refer to the <a class="reference external" href="https://github.com/AICoE/elyra-aidevsecops-tutorial">guide</a> and view our video <a class="reference external" href="https://www.youtube.com/watch?v=iMSOal8wRj4">tutorial</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../README.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Data Science Workflows</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="how-to-contribute.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">How to Contribute</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By AIOps<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

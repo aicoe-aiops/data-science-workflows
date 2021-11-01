@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MLflow - Simple Example &#8212; Data Science Workflows</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Workflows</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Data Science Workflows
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/getting-started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/how-to-contribute.html">
+   How to Contribute
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  AIOps projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/aiops-projects.html">
+   AI Ops Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/project-document-template.html">
+   Project Outline Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/project-structure.html">
+   Data Science Projects Structure for AI Ops
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Best Practices and Guidelines
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/guidelines-for-reviewing-datascience-code.html">
+   10 Principles for Reviewing Data Science Code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/data-visualization-best-practices.html">
+   Best Practices for Data Science Visualizations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/create_and_deploy_jh_image.html">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/MLflow/MLflow_example.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows/issues/new?title=Issue%20on%20page%20%2Fnotebooks/MLflow/MLflow_example.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href=" /v2/gh/aicoe-aiops/data-science-workflows/master?urlpath=lab/tree/notebooks/MLflow/MLflow_example.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https://github.com/aicoe-aiops/data-science-workflows&urlpath=lab/tree/data-science-workflows/notebooks/MLflow/MLflow_example.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-connection">
+   Set up connection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connection-configurations-set-by-the-user">
+     Connection configurations set by the user:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect-to-mlflow-and-start-tracking">
+     Connect to MLflow and start tracking:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-an-experiment">
+     Run an experiment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-all-of-our-model-s-parameters">
+     Define all of our model’s parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-each-parameter-in-mlflow">
+     Log each parameter in MLflow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-a-model">
+     Train a model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collect-the-performance-metrics-you-are-interested-in-tracking">
+     Collect the performance metrics you are interested in tracking
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-the-performance-metrics">
+     Log the performance metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finish-tracking">
+     Finish Tracking
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#review-results">
+     Review results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-experiments">
+     Multiple Experiments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Review results
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="mlflow-simple-example">
+<h1>MLflow - Simple Example<a class="headerlink" href="#mlflow-simple-example" title="Permalink to this headline">¶</a></h1>
+<p>This notebooks provides a simple example of using the <a class="reference external" href="http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/">AI Ops MLflow instance</a> to track runs for a new project. Specifically, how to log parameters and metrics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span> 
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-connection">
+<h2>Set up connection<a class="headerlink" href="#set-up-connection" title="Permalink to this headline">¶</a></h2>
+<p>ML Flow helps track experiments and runs within a particular data science project. As per MLFlow tracking conventions :</p>
+<ul class="simple">
+<li><p>An <strong>experiment</strong> corresponds to a particular version of code or model. Each experiment will be tracked as different commits within git.</p></li>
+<li><p>A <strong>run</strong> corresponds to a different hyper parameter setting or different feature engineering within same experiment. Runs are tracked within each ML Flow experiment</p></li>
+</ul>
+<ol class="simple">
+<li><p>Set up the ML Flow client and point it to our current MLFlow deployment : <a class="reference external" href="http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/#/">http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/#/</a></p></li>
+<li><p>Start a new MLflow run, setting it as the active run under which metrics and parameters will be logged</p></li>
+<li><p>Set an experiment for tracking a particular project</p></li>
+<li><p>Each run corresponds to a training cycle. Associate run name to version of code (experiment)</p></li>
+<li><p>Start a run</p></li>
+</ol>
+<div class="section" id="connection-configurations-set-by-the-user">
+<h3>Connection configurations set by the user:<a class="headerlink" href="#connection-configurations-set-by-the-user" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>MLFLOW_URI</strong>: route to deployment</p></li>
+<li><p><strong>EXPERIMENT_NAME</strong>: Name for entire set of experiments you want to compare. Think of this as the folder this run will live in or a particular version of the code or model.</p></li>
+<li><p><strong>RUN_NAME</strong>: custom name for this specific run</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># configurations set by the user</span>
+
+<span class="n">MLFLOW_URI</span> <span class="o">=</span> <span class="s1">&#39;http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com&#39;</span> <span class="c1">#route to deployment</span>
+<span class="n">EXPERIMENT_NAME</span> <span class="o">=</span> <span class="s1">&#39;AIOps_tracking_test_0.1&#39;</span><span class="c1"># Name for entire set of experiments you want to compare. </span>
+<span class="n">RUN_NAME</span> <span class="o">=</span> <span class="s2">&quot;template_example&quot;</span> <span class="c1"># custom name for this specific run</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="connect-to-mlflow-and-start-tracking">
+<h3>Connect to MLflow and start tracking:<a class="headerlink" href="#connect-to-mlflow-and-start-tracking" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># connect to mlflow </span>
+
+<span class="n">MLFLOW_CLIENT</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">MlflowClient</span><span class="p">(</span><span class="n">tracking_uri</span><span class="o">=</span><span class="n">MLFLOW_URI</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="n">MLFLOW_URI</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="n">EXPERIMENT_NAME</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_name</span><span class="o">=</span><span class="n">RUN_NAME</span><span class="p">)</span>
+<span class="n">mlflow_run_id</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">active_run</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="run-an-experiment">
+<h3>Run an experiment<a class="headerlink" href="#run-an-experiment" title="Permalink to this headline">¶</a></h3>
+<p>This is where things will start to changes dramatically for each data scientist’s specific use case. The main thing to note, is that for any parameter that you want to track in MLflow or is critically for outcome reproducibility, assign it explicitly. The variable name can be what ever you want, but the convention is to make it ALL_CAPS like in the examples below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load our data set!</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split data and set test_size and random_state as variables that we can track later in MLflow  </span>
+
+<span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">TEST_SIZE</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="n">TEST_SIZE</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-all-of-our-model-s-parameters">
+<h3>Define all of our model’s parameters<a class="headerlink" href="#define-all-of-our-model-s-parameters" title="Permalink to this headline">¶</a></h3>
+<p>To be exhaustive in this example we will explicitly set every parameter our model offers. It should be noted that except for <code class="docutils literal notranslate"><span class="pre">HIDDEN_LAYER_SIZES</span></code> the default values are used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ACTIVATION</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span>
+<span class="n">ALPHA</span> <span class="o">=</span> <span class="mf">0.0001</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+<span class="n">BETA_1</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">BETA_2</span> <span class="o">=</span> <span class="mf">0.999</span>
+<span class="n">EARLY_STOPPING</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">EPSILON</span> <span class="o">=</span> <span class="mf">1e-08</span>
+<span class="n">HIDDEN_LAYER_SIZES</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,)</span>
+<span class="n">LEARNING_RATE</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span>
+<span class="n">LEARNING_RATE_INIT</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">MAX_FUN</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="n">MAX_ITER</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">MOMENTUM</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="n">N_ITER_NO_CHANGE</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">NESTEROVS_MOMENTUM</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">POWER_T</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">SHUFFLE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">SOLVER</span> <span class="o">=</span> <span class="s1">&#39;adam&#39;</span>
+<span class="n">TOL</span> <span class="o">=</span> <span class="mf">0.0001</span>
+<span class="n">VALIDATION_FRACTION</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">VERBOSE</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">WARM_START</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create our Multi-layer Perceptron model</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="n">ACTIVATION</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">ALPHA</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">=</span><span class="n">BETA_1</span><span class="p">,</span> <span class="n">beta_2</span><span class="o">=</span><span class="n">BETA_2</span><span class="p">,</span>
+                    <span class="n">early_stopping</span><span class="o">=</span><span class="n">EARLY_STOPPING</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">EPSILON</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="n">HIDDEN_LAYER_SIZES</span><span class="p">,</span>
+                   <span class="n">learning_rate</span><span class="o">=</span><span class="n">LEARNING_RATE</span><span class="p">,</span> <span class="n">learning_rate_init</span><span class="o">=</span><span class="n">LEARNING_RATE_INIT</span><span class="p">,</span><span class="n">max_fun</span><span class="o">=</span><span class="n">MAX_FUN</span><span class="p">,</span>
+                   <span class="n">max_iter</span><span class="o">=</span><span class="n">MAX_ITER</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="n">MOMENTUM</span><span class="p">,</span> <span class="n">n_iter_no_change</span><span class="o">=</span><span class="n">N_ITER_NO_CHANGE</span><span class="p">,</span>
+                   <span class="n">nesterovs_momentum</span><span class="o">=</span><span class="n">NESTEROVS_MOMENTUM</span><span class="p">,</span> <span class="n">power_t</span><span class="o">=</span><span class="n">POWER_T</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">,</span>
+                   <span class="n">shuffle</span><span class="o">=</span><span class="n">SHUFFLE</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="n">SOLVER</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">TOL</span><span class="p">,</span> <span class="n">validation_fraction</span><span class="o">=</span><span class="n">VALIDATION_FRACTION</span><span class="p">,</span>
+                   <span class="n">verbose</span><span class="o">=</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">WARM_START</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="log-each-parameter-in-mlflow">
+<h3>Log each parameter in MLflow<a class="headerlink" href="#log-each-parameter-in-mlflow" title="Permalink to this headline">¶</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">mlflow.log_param(Name,</span> <span class="pre">Value)</span></code> function for each parameter to log their values o for this run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;RANDOM_STATE&quot;</span><span class="p">,</span> <span class="n">RANDOM_STATE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;ACTIVATION&quot;</span><span class="p">,</span><span class="n">ACTIVATION</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;ALPHA&quot;</span><span class="p">,</span><span class="n">ALPHA</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;BATCH_SIZE&quot;</span><span class="p">,</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;BETA_1&quot;</span><span class="p">,</span><span class="n">BETA_1</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;BETA_2&quot;</span><span class="p">,</span><span class="n">BETA_2</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;EARLY_STOPPING&quot;</span><span class="p">,</span><span class="n">EARLY_STOPPING</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;EPSILON&quot;</span><span class="p">,</span><span class="n">EPSILON</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;HIDDEN_LAYER_SIZES&quot;</span><span class="p">,</span><span class="n">HIDDEN_LAYER_SIZES</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;LEARNING_RATE&quot;</span><span class="p">,</span><span class="n">LEARNING_RATE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;LEARNING_RATE_INIT&quot;</span><span class="p">,</span><span class="n">LEARNING_RATE_INIT</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;MAX_FUN&quot;</span><span class="p">,</span><span class="n">MAX_FUN</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;MAX_ITER&quot;</span><span class="p">,</span><span class="n">MAX_ITER</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;MOMENTUM&quot;</span><span class="p">,</span><span class="n">MOMENTUM</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;N_ITER_NO_CHANGE&quot;</span><span class="p">,</span><span class="n">N_ITER_NO_CHANGE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;NESTEROVS_MOMENTUM&quot;</span><span class="p">,</span><span class="n">NESTEROVS_MOMENTUM</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;POWER_T&quot;</span><span class="p">,</span><span class="n">POWER_T</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;RANDOM_STATE&quot;</span><span class="p">,</span><span class="n">RANDOM_STATE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;SHUFFLE&quot;</span><span class="p">,</span><span class="n">SHUFFLE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;SOLVER&quot;</span><span class="p">,</span><span class="n">SOLVER</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;TOL&quot;</span><span class="p">,</span><span class="n">TOL</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;VALIDATION_FRACTION&quot;</span><span class="p">,</span><span class="n">VALIDATION_FRACTION</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;VERBOSE&quot;</span><span class="p">,</span><span class="n">VERBOSE</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;WARM_START&quot;</span><span class="p">,</span><span class="n">WARM_START</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-a-model">
+<h3>Train a model<a class="headerlink" href="#train-a-model" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/app-root/lib/python3.6/site-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn&#39;t converged yet.
+  % self.max_iter, ConvergenceWarning)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MLPClassifier(activation=&#39;relu&#39;, alpha=0.0001, batch_size=&#39;auto&#39;, beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(10,), learning_rate=&#39;constant&#39;,
+              learning_rate_init=0.001, max_fun=15000, max_iter=200,
+              momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
+              power_t=0.5, random_state=None, shuffle=True, solver=&#39;adam&#39;,
+              tol=0.0001, validation_fraction=0.1, verbose=False,
+              warm_start=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8666666666666667
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        29
+           1       1.00      0.57      0.72        23
+           2       0.70      1.00      0.82        23
+
+    accuracy                           0.87        75
+   macro avg       0.90      0.86      0.85        75
+weighted avg       0.91      0.87      0.86        75
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="collect-the-performance-metrics-you-are-interested-in-tracking">
+<h3>Collect the performance metrics you are interested in tracking<a class="headerlink" href="#collect-the-performance-metrics-you-are-interested-in-tracking" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#OUTPUT_DIR = &#39;outputs&#39;</span>
+<span class="c1">#mlflow.set_tag( &quot;model&quot;, OUTPUT_DIR)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="log-the-performance-metrics">
+<h3>Log the performance metrics<a class="headerlink" href="#log-the-performance-metrics" title="Permalink to this headline">¶</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">MLFLOW_CLIENT.log_metric(mlflow_run_id,</span> <span class="pre">metric_name,</span> <span class="pre">metric_value)</span></code> function, define each metric that you would like tracked by MLflow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metrics </span>
+
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_Precision &quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_recall &quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Accuracy &quot;</span><span class="p">,</span>  <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_Precision &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_recall &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_Precision &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_recall &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_Precision &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_recall &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+<span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finish-tracking">
+<h3>Finish Tracking<a class="headerlink" href="#finish-tracking" title="Permalink to this headline">¶</a></h3>
+<p>use <code class="docutils literal notranslate"><span class="pre">mlflow.end_run()</span></code> to finish the experiment and send all the logged values to the MLflow deployment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlflow</span><span class="o">.</span><span class="n">end_run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="review-results">
+<h3>Review results<a class="headerlink" href="#review-results" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/#/experiments/6">http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/#/experiments/6</a></p>
+</div>
+<div class="section" id="multiple-experiments">
+<h3>Multiple Experiments<a class="headerlink" href="#multiple-experiments" title="Permalink to this headline">¶</a></h3>
+<p>The example above assumes a one off or  hand tuning situation. What if I wanted to perform a parameter search a log all the results with MLflow. Let take all the above and make a slightly more complicated example where we run 3 different experiments, where we will very the number of hidden layers and then log the results in MLflow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">]:</span>
+
+<span class="c1"># configurations set by the user</span>
+
+    <span class="n">MLFLOW_URI</span> <span class="o">=</span> <span class="s1">&#39;http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com&#39;</span> <span class="c1">#route to deployment</span>
+    <span class="n">EXPERIMENT_NAME</span> <span class="o">=</span> <span class="s1">&#39;AIOps_tracking_test_0.1&#39;</span><span class="c1"># Name for entire set of experiments you want to compare. </span>
+    <span class="n">RUN_NAME</span> <span class="o">=</span> <span class="s2">&quot;template_example&quot;</span> <span class="c1"># custom name for this specific run</span>
+
+    <span class="n">MLFLOW_CLIENT</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">MlflowClient</span><span class="p">(</span><span class="n">tracking_uri</span><span class="o">=</span><span class="n">MLFLOW_URI</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="n">MLFLOW_URI</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="n">EXPERIMENT_NAME</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_name</span><span class="o">=</span><span class="n">RUN_NAME</span><span class="p">)</span>
+    <span class="n">mlflow_run_id</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">active_run</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
+
+
+
+    <span class="c1"># Load our data set!</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+
+    <span class="c1"># Split data and set test_size and random_state as variables that we can track later in MLflow  </span>
+
+    <span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="n">TEST_SIZE</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="n">TEST_SIZE</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">)</span>
+
+    <span class="n">ACTIVATION</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span>
+    <span class="n">ALPHA</span> <span class="o">=</span> <span class="mf">0.0001</span>
+    <span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span>
+    <span class="n">BETA_1</span> <span class="o">=</span> <span class="mf">0.9</span>
+    <span class="n">BETA_2</span> <span class="o">=</span> <span class="mf">0.999</span>
+    <span class="n">EARLY_STOPPING</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">EPSILON</span> <span class="o">=</span> <span class="mf">1e-08</span>
+    <span class="n">HIDDEN_LAYER_SIZES</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span><span class="p">,)</span>
+    <span class="n">LEARNING_RATE</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span>
+    <span class="n">LEARNING_RATE_INIT</span> <span class="o">=</span> <span class="mf">0.001</span>
+    <span class="n">MAX_FUN</span> <span class="o">=</span> <span class="mi">15000</span>
+    <span class="n">MAX_ITER</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">MOMENTUM</span> <span class="o">=</span> <span class="mf">0.9</span>
+    <span class="n">N_ITER_NO_CHANGE</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">NESTEROVS_MOMENTUM</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">POWER_T</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">SHUFFLE</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">SOLVER</span> <span class="o">=</span> <span class="s1">&#39;adam&#39;</span>
+    <span class="n">TOL</span> <span class="o">=</span> <span class="mf">0.0001</span>
+    <span class="n">VALIDATION_FRACTION</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">VERBOSE</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">WARM_START</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="n">ACTIVATION</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">ALPHA</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">beta_1</span><span class="o">=</span><span class="n">BETA_1</span><span class="p">,</span> <span class="n">beta_2</span><span class="o">=</span><span class="n">BETA_2</span><span class="p">,</span>
+                        <span class="n">early_stopping</span><span class="o">=</span><span class="n">EARLY_STOPPING</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">EPSILON</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="n">HIDDEN_LAYER_SIZES</span><span class="p">,</span>
+                       <span class="n">learning_rate</span><span class="o">=</span><span class="n">LEARNING_RATE</span><span class="p">,</span> <span class="n">learning_rate_init</span><span class="o">=</span><span class="n">LEARNING_RATE_INIT</span><span class="p">,</span><span class="n">max_fun</span><span class="o">=</span><span class="n">MAX_FUN</span><span class="p">,</span>
+                       <span class="n">max_iter</span><span class="o">=</span><span class="n">MAX_ITER</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="n">MOMENTUM</span><span class="p">,</span> <span class="n">n_iter_no_change</span><span class="o">=</span><span class="n">N_ITER_NO_CHANGE</span><span class="p">,</span>
+                       <span class="n">nesterovs_momentum</span><span class="o">=</span><span class="n">NESTEROVS_MOMENTUM</span><span class="p">,</span> <span class="n">power_t</span><span class="o">=</span><span class="n">POWER_T</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">,</span>
+                       <span class="n">shuffle</span><span class="o">=</span><span class="n">SHUFFLE</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="n">SOLVER</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">TOL</span><span class="p">,</span> <span class="n">validation_fraction</span><span class="o">=</span><span class="n">VALIDATION_FRACTION</span><span class="p">,</span>
+                       <span class="n">verbose</span><span class="o">=</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">WARM_START</span><span class="p">)</span>
+
+    <span class="c1"># Parameters</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;RANDOM_STATE&quot;</span><span class="p">,</span> <span class="n">RANDOM_STATE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;ACTIVATION&quot;</span><span class="p">,</span><span class="n">ACTIVATION</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;ALPHA&quot;</span><span class="p">,</span><span class="n">ALPHA</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;BATCH_SIZE&quot;</span><span class="p">,</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;BETA_1&quot;</span><span class="p">,</span><span class="n">BETA_1</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;BETA_2&quot;</span><span class="p">,</span><span class="n">BETA_2</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;EARLY_STOPPING&quot;</span><span class="p">,</span><span class="n">EARLY_STOPPING</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;EPSILON&quot;</span><span class="p">,</span><span class="n">EPSILON</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;HIDDEN_LAYER_SIZES&quot;</span><span class="p">,</span><span class="n">HIDDEN_LAYER_SIZES</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;LEARNING_RATE&quot;</span><span class="p">,</span><span class="n">LEARNING_RATE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;LEARNING_RATE_INIT&quot;</span><span class="p">,</span><span class="n">LEARNING_RATE_INIT</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;MAX_FUN&quot;</span><span class="p">,</span><span class="n">MAX_FUN</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;MAX_ITER&quot;</span><span class="p">,</span><span class="n">MAX_ITER</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;MOMENTUM&quot;</span><span class="p">,</span><span class="n">MOMENTUM</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;N_ITER_NO_CHANGE&quot;</span><span class="p">,</span><span class="n">N_ITER_NO_CHANGE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;NESTEROVS_MOMENTUM&quot;</span><span class="p">,</span><span class="n">NESTEROVS_MOMENTUM</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;POWER_T&quot;</span><span class="p">,</span><span class="n">POWER_T</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;RANDOM_STATE&quot;</span><span class="p">,</span><span class="n">RANDOM_STATE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;SHUFFLE&quot;</span><span class="p">,</span><span class="n">SHUFFLE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;SOLVER&quot;</span><span class="p">,</span><span class="n">SOLVER</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;TOL&quot;</span><span class="p">,</span><span class="n">TOL</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;VALIDATION_FRACTION&quot;</span><span class="p">,</span><span class="n">VALIDATION_FRACTION</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;VERBOSE&quot;</span><span class="p">,</span><span class="n">VERBOSE</span><span class="p">)</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_param</span><span class="p">(</span><span class="s2">&quot;WARM_START&quot;</span><span class="p">,</span><span class="n">WARM_START</span><span class="p">)</span>
+
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">output_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Metrics </span>
+
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_Precision &quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_recall &quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Avg_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;macro avg&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;Accuracy &quot;</span><span class="p">,</span>  <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_Precision &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_recall &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;0_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_Precision &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_recall &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;1_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_Precision &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_recall &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_f1-score &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;f1-score&#39;</span><span class="p">])</span>
+    <span class="n">MLFLOW_CLIENT</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="n">mlflow_run_id</span><span class="p">,</span> <span class="s2">&quot;2_support &quot;</span><span class="p">,</span>  <span class="n">metrics</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">][</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>
+
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">end_run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/app-root/lib/python3.6/site-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn&#39;t converged yet.
+  % self.max_iter, ConvergenceWarning)
+/opt/app-root/lib/python3.6/site-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn&#39;t converged yet.
+  % self.max_iter, ConvergenceWarning)
+/opt/app-root/lib/python3.6/site-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn&#39;t converged yet.
+  % self.max_iter, ConvergenceWarning)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Review results<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/#/experiments/6">http://mlflow-server-route-aiops-prod-prometheus-scrape.cloud.paas.psi.redhat.com/#/experiments/6</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/MLflow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By AIOps<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
