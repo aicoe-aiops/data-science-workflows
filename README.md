@@ -7,6 +7,7 @@ The purpose of the data science workflows is both to provide Data Scientists in 
 * **[How to Contribute](docs/how-to-contribute.md)**
 
 * **[Data Science Projects](https://www.operate-first.cloud/data-science)**
+* **[Jupyter Book](https://aicoe-aiops.github.io/data-science-workflows/)**
 
 ### Contact
 
