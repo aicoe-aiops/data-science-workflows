@@ -47,17 +47,17 @@ For more information of the remainder of our GitHub workflow, please visit [this
 The following resources are available for use to develop your project on the Operate First JupyterHub instance:
 
 * **Start developing on the Operate First JupyterHub environment**
-    - View the [video tutorial](https://www.youtube.com/watch?v=iI_-lqi3vP4&list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&index=3&t=13s) 
-    - Access the public [JupyterHub instance][11] on the Massachusetts Open Cloud (MOC) by selecting moc-sso and then signing in with your Google Account
+    - View the [video tutorial](https://www.youtube.com/watch?v=iI_-lqi3vP4&list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&index=3)
+    - Access the public [JupyterHub instance][11] on the Massachusetts Open Cloud (MOC) by selecting *operate-first* authentication and then signing in with your GitHub account
 
 * **How to Monitor JupyterHub workloads using Grafana dashboards** 
     -  (Video tutorial forthcoming)
-    -  To troubleshoot issues while running your notebooks, you can refer to the [Troubleshooting Runbooks](https://www.operate-first.cloud/users/sre/runbooks/jupyterhub.md)
-    -  You can refer the existing [Grafana dashboard](https://www.google.com/url?q=https://grafana-route-opf-monitoring.apps.zero.massopen.cloud/d/24cc5f554da78f3ca60a40f190f7e23203f7d847/jupyterhub-usage?orgId%3D1%26from%3Dnow-3h%26to%3Dnow%26var-datasource%3Dopf-observatorium-thanos%26var-user_id%3Dochatter-40redhat-2ecom%26var-namespace%3Dopf-jupyterhub&sa=D&source=editors&ust=1627309997546000&usg=AOvVaw3CaL9UuS0xpAmAOwxAZCrS) for monitoring your Jupyterhub workloads such as CPU, RAM usage, percentage PVC usage.
+    -  To troubleshoot issues while running your notebooks, you can refer to the [Troubleshooting Runbooks][12]
+    -  You can refer the existing [Grafana dashboard][13] for monitoring your Jupyterhub workloads such as CPU, RAM usage, percentage PVC usage.
 
 ### **Managing Dependencies**
 
-Guidance for managing notebook dependencies can be found in this [video](https://www.youtube.com/watch?v=ifyQ2oSxjnU&list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&index=4). The repository for our dependency management tool can be found [here](https://www.google.com/url?q=https://github.com/thoth-station/jupyterlab-requirements&sa=D&source=editors&ust=1627073082597000&usg=AOvVaw0ZMXjgL0ryYJC5hkIMJhNS). 
+Guidance for managing notebook dependencies can be found in this [video](https://www.youtube.com/watch?v=ifyQ2oSxjnU&list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&index=4). The repository for our dependency management tool can be found [here](https://github.com/thoth-station/jupyterlab-requirements). 
 
 ### **Deliverables**
 
@@ -65,7 +65,7 @@ Here are potential ways to contribute and showcase work you have completed.
 * Slide decks
 * Blog posts ([example](https://www.operate-first.cloud/data-science/configuration-files-analysis/docs/blog/configuration-file-analysis-blog.md))
 * Videos ([example](https://www.youtube.com/watch?v=BKnF174eZN0&list=PL8VBRDTElCWoGwMhCp04rQFMcIhshv33U&index=9))
-* Tutorials ([example](https://www.operate-first.cloud/data-science/ocp-ci-analysis/docs/automating-using-elyra.md))
+* Tutorials ([example](https://www.operate-first.cloud/data-science/ai4ci/docs/automating-using-elyra.md))
 * Content images
 * Project Repositories ([example](https://github.com/aicoe-aiops/ocp-ci-analysis))
 * Dashboards
@@ -86,5 +86,7 @@ To automate your notebook workflows using Elyra and Kubeflow Pipelines on Open D
 [6]: https://github.com/aicoe-aiops/project-template
 [7]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
 [8]: https://github.com/orgs/aicoe-aiops/projects/2
-[10]: docs/how-to-contribute.md
-[11]: https://oauth-openshift.apps.zero.massopen.cloud/oauth/authorize?response_type=code&redirect_uri=https%3A%2F%2Fjupyterhub-opf-jupyterhub.apps.zero.massopen.cloud%2Fhub%2Foauth_callback&client_id=system%3Aserviceaccount%3Aopf-jupyterhub%3Ajupyterhub-hub&state=eyJzdGF0ZV9pZCI6ICI0NjQzNjI0NDY5OTY0MmUxOWJhMzM5OTA0ZDZhZDcwZiIsICJuZXh0X3VybCI6ICIvaHViLyJ9&scope=user%3Ainfo
+[10]: how-to-contribute.md
+[11]: https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/
+[12]: https://www.operate-first.cloud/hitchhikers-guide/apps/docs/odh/jupyterhub/runbook.md
+[13]: https://grafana.operate-first.cloud/
