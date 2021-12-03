@@ -55,6 +55,10 @@ The following resources are available for use to develop your project on the Ope
     -  To troubleshoot issues while running your notebooks, you can refer to the [Troubleshooting Runbooks][12]
     -  You can refer the existing [Grafana dashboard][13] for monitoring your Jupyterhub workloads such as CPU, RAM usage, percentage PVC usage.
 
+* **How to Meteorize the repository**
+    - To meteorize your github repository, first start with making a jupyterbook. You can refer to the tutorial [here.](https://github.com/AICoE/meteor/blob/main/docs/build-jupyterbooks.md) 
+    - After you have the jupyterbook ready, head to [meteor](https://shower.meteor.zone/) to meteorize the project repository.
+
 ### **Managing Dependencies**
 
 Guidance for managing notebook dependencies can be found in this [video](https://www.youtube.com/watch?v=ifyQ2oSxjnU&list=PL8VBRDTElCWpneB4dBu4u1kHElZVWfAwW&index=4). The repository for our dependency management tool can be found [here](https://github.com/thoth-station/jupyterlab-requirements). 
@@ -68,6 +72,7 @@ Here are potential ways to contribute and showcase work you have completed.
 * Tutorials ([example](https://www.operate-first.cloud/data-science/ai4ci/docs/automating-using-elyra.md))
 * Content images
 * Project Repositories ([example](https://github.com/aicoe-aiops/ocp-ci-analysis))
+* Meteorized Repositories ([example](http://data-science-workflows.catalog.meteor.zone/))
 * Dashboards
 * Model Services
 
