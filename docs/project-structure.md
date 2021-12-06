@@ -1,157 +1,92 @@
-## Data Science Projects Structure for AI Ops
+# How to Structure a Data Science Project: The Operate First Way! 
 
-The purpose of this document is to provide Data Scientists in the AI CoE with a template for structuring their projects as well as encouraging a more consistent workflow across projects that promotes an “operate first” mentality; testing and taking advantage of the capabilities the AI CoE has been developing, as well as to ensure that as data scientists, focused on developing intelligent applications for the cloud, we are working from a cloud-native data science mindset from the start.   
+The purpose of this document is to provide teams of data scientists in the Operate First Community with some guidelines on how to best structure their projects in a way that encourages consistent workflows across projects, promotes collaboration and an "Operate First” mentality. 
 
-This should be seen as a living document that gets modified and updated as we continue to learn the best way to structure, execute and operate first AI CoE Data Science Projects. That said, I don’t want that to be misinterpreted to mean that what is outlined below are mere suggestions. Between updates of this document, we should try and follow its outline as close as possible to ensure consistency across projects and to learn together what is and is not working. *Please track all suggestions as comments in this document. : )*
+# How do I manage my project?
 
-### General Info about project needs and structure:
+Organizational overhead can be an easily overlooked, and a potentially crippling oversight for a new open source project. To make things worse, data science is still a relatively new discipline and the right tools and methodologies for project management are still being figured out.
 
+Our approach to overcoming this issue is simply to focus on the fewest number of tools possible. That really comes down to using GitHub, for just about everything, and Slack if we want to have a real time conversations. What do you need to start your project and keep it moving? 
 
-1. All Data Scientists will request and receive a default Jupyterhub instance of 32gb Ram and larger pvc from the DH team. Create a tracking doc for all bugs / requests to DataHub
+* GitHub
+	* Public repository ([examples](https://github.com/aicoe-aiops))
+	* Project board ([examples](https://github.com/orgs/aicoe-aiops/projects) )
+	* Issues templates ([examples](https://github.com/aicoe-aiops/project-template/tree/master/.github/ISSUE_TEMPLATE))
+	* [Helpful bots](https://github.com/apps/khebhut) 
 
+*You can also jump start your repo with our [project template](https://github.com/aicoe-aiops/project-template).*
+	 
+* Slack
+	* Project channel(s) ([example](https://join.slack.com/t/operatefirst/shared_invite/zt-o2gn4wn8-O39g7sthTAuPCvaCNRnLww))
+</br></br>
+# What are the phases of a data science project?:
 
-2. All data scientists will use the DH as their primary working environment. 
+### **1. Project Definition and Use Case Understanding**:
 
-	1. If they are blocked due to resources or performance issues with the environment, they will bring the issue to the attention of their team lead and the DH team to be resolved together. If and ONLY IF the issue cannot be resolved on a reasonable timeline will the Data Scientist have the option to work on their local machines temporarily. 
+To start, contributors should create a public repo and include a README with an initial outline of the project, a description of any available data or similar projects and the desired outcomes and end-users of this intelligent application. If you need help coming up with a project outline, feel free to start with [this template](/project-document-template.md) for inspiration. 
 
-	2. Any work done on a local machine that is not immediately reproducible on Openshift/ DH will be considered incomplete. 
+The project outline can include: 
 
-	3. This  [tracking document ](https://docs.google.com/document/d/1-QX-_OoPIGn-FM-QViVNSyJ-pXBVARPBbAsRvtd1_xU/edit) will be used to collect any bugs/ issues we find while using the datahub. 
+1. A concrete checklist of items that define when the project is complete (subject to ongoing review)
 
+2. Defined performance criteria and success metrics that will be used to evaluate the success of the machine learning models.   
 
-3.     Data Scientists will have their own bucket in DH Ceph as their primary storage.
+3. An alternative solution written in terms as though it would be solved manually by a human without AI, i.e, "I use my eyes to look at a picture and respond that it is or is not a cat based on my knowledge of the appearance of cats". This helps to identify any potential mismatch between desired outcome and available data. 
 
-	1. Although Data Scientists will have a larger pvc on DH, this should primarily be used for notebooks, scripts and smaller POC data sets, whereas the actual data for projects should be stored primarily in Ceph. 
-
-	2. This  [document ](https://docs.google.com/document/d/1St3G_I3fZHaxU-GC5lrxD9v4Q009OCbcL7SRUZf_gmU/edit#heading=h.sjyd8okvpwjk) provides information on how to get access to the current DH-PLAYPEN bucket in data hub for temporary use 
-
-	3. This  [document](https://help.datahub.redhat.com/docs/onboarding-to-ceph-s3)  provides information for requesting your own Ceph bucket  in Data Hub.     
-
-
-
-4. Every project will be tracked in its parent's organization level Github project board for task tracking and a shared google drive folder for artifacts. 
-
-	1. Github [Project Board](https://github.com/orgs/aicoe-aiops/projects) 
-
-	2. Google [ Drive](https://drive.google.com/drive/folders/17nhASQZUbGISFQswUb-ft3V1dxbD7dtX) 
-
+4. Outline a path to operationalization. Make sure there is some consideration given to the infrastructure, deployment, and user interactions of your projects final form.  
  
-5. Every project will have a “Project Owner” on the AI Ops side, responsible for ensuring the delivery of the items outlined in the “Project Flow” section below. Ideally, this is the Data Scientist(s) responsible for the project.   
+Once this is done, you can move on to step 2, OR share your new project proposal with the Operate Fist DS Community on [Slack](https://join.slack.com/t/operatefirst/shared_invite/zt-o2gn4wn8-O39g7sthTAuPCvaCNRnLww) (#data-science) to get some feedback and potential contributors.   
+
+### **2.** **Research and Problem Understanding**:
+
+Now that you have a problem you'd like to solve, its time to do some research!!! This phase of a project is quite flexible and is bound to be traversed differently by every individual. However, before jumping into any hard-core development we generally like to make sure to do the following at the bare minimum:
+
+1. Compile and read 3-4 relevant papers on the problem domain. [Papers With Code](https://paperswithcode.com/) and [arxiv](https://arxiv.org/) will be your friends here. 
+
+2. Find 1-2 comparable open source projects and try to deploy them yourself. Maybe the solution you're looking for already exists and you can re-use or contribute to an existing project instead of starting from scratch. 
+
+3. Add a `research.md` doc to your repo outlining the papers and projects explored above. This may be useful to you for reference or documentation later on. Plus, anyone who needs to do the same research in the future will thank you. 
+
+### **3.** **Data Preparation and EDA**: 
+
+Time to dig into the data. Before getting right into the Machine Learning development, we think its best practice to take some focused time to familiarize yourself with the data and to write all the data preparation, processing and management functions you'll need to make life easier in the future. 
 
 
- 
-### Project Flow:
+1. Make sure your data is publicly available and accessible. We recommend using a Ceph bucket on the OPF cluster (request one [here](https://github.com/operate-first/support/issues/new?assignees=first-operator&labels=kind%2Fonboarding%2Carea%2Fbucket&template=ceph_bucket_request.yaml&title=BUCKET%3A+%3Cname%3E)) 
+
+2. Develop an EDA Notebook to help explain to others (and your future self) what the data looks like and what it represents.
+
+3. Write all necessary ETL, data cleaning and preprocessing code. 
+
+4. Select and separate immutable training, testing and evaluation datasets. Store each separately in your Ceph bucket.   
+
+5. Make any required updates to the project Readme/Plan if needed due to discoveries in the data set.  
 
 
-**1.** **Project definition and Business Understanding** (~5  days):
+### **4.** **Implement proof of concept AI/ML model**:
 
-	1. Stakeholders will meet to discuss projects, available data and desired outcomes, use cases and end-users.
+Here is were we start to do some ML exploration and put together our bare-bones mvp application. 
 
-		1. Define concrete checklist of items that define when the project is complete (subject to ongoing  review)
+1. Create a jupyter notebook and start experimenting with different models and approaches until your results meet the performance criteria defined earlier. At this stage there are a number of options for experiment tracking, but we recommend using [kubeflow pipelines](demovideo).   
 
-		2. Provide a  solution solved by a human (can identify a cat)
+2. Clean up your experimental notebook so that another data scientists would be able to follow the logic, re-run it and understand your results. This means, clearly written markdown cells, well labeled plots and commented code.     
 
-		3. Outline path to operationalization
+3. Once your Proof of Concept notebook(s) are done. Push them to your github repo and share them using [project meteor](https://shower.meteor.zone/)   
 
-	2. Relevant members of AI COE will develop a preliminary project description to be shared with stakeholder team for general agreement. 
+### **5.** **Deployed PoC as a service**
 
-	3.  Deliverable Artifacts
+Your work is ready to leave the safety of a jupyter notebook and become a deployed service that will become the center of a new intelligent application. Get Excited! 
 
-		1. preliminary project description     
+1. Deploy your model. There are a number of tools out their to make this easy, but we recommend using Seldon. Here is a link to a [tutorial](TBD) on how to deploy your model with Seldon on Operate First.  
 
-
-**2.** **Research and Problem Understanding** (~ 1 to 2 weeks):
-
-	1. Compile and read 3-4 relevant papers on the problem domain.
-
-	2. Find 1-2 comparable open source projects and deploy them. 
-
-	3. Present a problem state-of-the-art deck to the AI Ops team along with baseline results from b) and initial outline of how to proceed with the project.
-
-	4. Present modified plan for achieving project goal and share with stakeholder team for general agreement. This will also include: 
-
-		1. Data Requirements 
-
-		2. Performance Criteria
-
-		3. ML approach and reasoning
-
-	5. Deliverable Artifacts
-
-		1. State-of-the-art deck
-
-		2. Write up of how to proceed with the project
+2. Write a short notebook that can send and receive inference requests from your model services endpoint to make it easy for others to test and try out. 
 
 
-**3.** **Data Preparation and EDA** (~1-2 weeks): 
+### **6.** **Evaluation**
 
-	1. Work with stakeholders to ensure access to data
+Now that your model is out in the wild, its a good idea to see if it's actually useful to anyone and evaluate its real world performance. 
 
-	2. Work with stakeholders to create description of data/metadata
+1. Share your work on [Slack](https://join.slack.com/t/operatefirst/shared_invite/zt-o2gn4wn8-O39g7sthTAuPCvaCNRnLww) (#data-science) or present it at the [Operate First Data Science Meet Up](https://github.com/aicoe-aiops/operate-first-data-science-community/issues/new/choose) to get people using and testing out your model. 
 
-	3. Determine if we need SME labeled or augmented data at this stage.  
-
-	4. Produce an EDA Notebook
-
-	5. ETL, data cleaning and preprocessing scripts will be completed at this stage. 
-
-	6. Fix a training, testing and evaluation dataset. (If a data source is an ongoing service, we will fix a time range for model development and evaluation. If this is a reinforcement learning problem, the interactive environment will be built at this stage) 
-
-	7. Present modified plan for achieving project goal and share with stakeholder team for general agreement. This will include: 
-
-		1. Any changes to part 2 plan if needed after EDA and data discovery
-
-	8. Deliverable Artifacts
-
-		1. EDA notebook
-
-		2. Link to fixed evaluation dataset or reproducible data environment
-
-
-**4.** **Implement proof of concept AI/ML mode**l (~1-2 weeks):
-
-	1. Write up or presentation that includes reasoning behind choosing ml methods and model descriptions. 
-
-	2. In a jupyter notebook on DH create an initial PoC with annotated cells explaining the work.
-
-	3. MLflow will be used to keep track of experiments and hyper parameter tuning at this stage.  
-
-	4. Deliverable Artifacts
-
-		1. PoC notebook running in JH
-
-		2. Link to ML Flow dashboard with experiments
-
-		3. Write up/ presentation explaining results and model to use  
-
-
-**5.** **Deployed as a PoC service** using notebook2image (or equivalent tools as they are improved/ developed) (~1 week) 
-
-	1. Monitoring will be planned and implemented at this stage as well.
-
-	2. As with most AI Ops projects these will likely be some kind of intelligent monitoring tool, so we should have as an output of this stage a demo to simulate the tool in operation (possibly with a grafana dashboard for visualization). 
-
-	3. Deliverable Artifacts
-
-		1. Link to exposed route or demo app where user could interact with model
-
-
-**6.** **Application Evaluation** ( ~infinity weeks ) 
-
-	1. Present result and demo to stakeholders.
-
-	2. Loop back to previous steps and repeat until agreement with stakeholders that project is successful.
-
-	3. Deliverable Artifacts
-
-		1. ???
-
- 
-**7.** **Hand-off** (~4 weeks)
-
-	1. Containerized application is deployed and integrated into stakeholders’ production workflow.    
-
-	2. Deliverable Artifacts
-
-		1. Final presentation/ write up and delivery of all artifacts to date 
+2. If there are any issues or areas to improve (which there will be) loop back to previous steps in this workflow and repeat until your project meets your desired outcome. 
 
