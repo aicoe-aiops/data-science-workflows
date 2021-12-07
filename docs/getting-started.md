@@ -79,6 +79,9 @@ Here are potential ways to contribute and showcase work you have completed.
 ### **Creating Jupyterhub Images**
 JH images can be made from your projects to easily share reproducible ML experiments and create interactive Data Science working environments. Please refer to the following [guide](https://www.operate-first.cloud/users/data-science-workflows/docs/create_and_deploy_jh_image.md) for more information.
 
+### **Deploy models on OpenShift using Seldon**
+After training a model on JupyterHub, if you need to deploy it on OpenShift, [here](deploy-models-using-seldon.md) is a guide you can use that outlines the process of taking a model from a Jupyter notebook to deploying it on OpenShift using Seldon.
+
 ### **Creating Automated Model Workflows**
 
 To automate your notebook workflows using Elyra and Kubeflow Pipelines on Open Data Hub, you can refer to the [guide](https://github.com/AICoE/elyra-aidevsecops-tutorial) and view our video [tutorial](https://www.youtube.com/watch?v=iMSOal8wRj4).
