@@ -14,7 +14,7 @@ The outline below provides some helpful links to kick start the creation of a ne
 
 
 ## Set Up Bots and CI Tools
-* Set up the aicoe-ci tools for your repo. These tools can aid in various aspects of your development workflow by running pre-commit checks, build checks, triggering pipelines to build images and more automatically. Find more info on setting up these tools [here](https://github.com/aicoe/aicoe-ci#getting-started).
+* Set up the [aicoe-ci](/thoth-tools.md) tools for your repo. These tools can aid in various aspects of your development workflow by running pre-commit checks, build checks, triggering pipelines to build images and more automatically. Find more info on setting up these tools [here](https://github.com/aicoe/aicoe-ci#getting-started).
 
 ## Use Open Data Hub and JupyterHub instances
 
@@ -25,5 +25,5 @@ The outline below provides some helpful links to kick start the creation of a ne
 ## Join the Community! 
 
 * Attend our [meetups](https://www.operate-first.cloud/data-science/operate-first-data-science-community/docs/meetup-landing-page.md).
-* Say "Hi" on [Slack](https://operatefirst.slack.com/ssb/redirect).
+* Say "Hi" on [Slack](https://operatefirst.slack.com/ssb/redirect) in the #data-science channel.
 * Open an [issue](https://github.com/operate-first/support).     
