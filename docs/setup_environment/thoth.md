@@ -1,4 +1,4 @@
-### **Set Up AICoE Continuous Integration (CI)**
+### Set Up AICoE Continuous Integration (CI)
 
 [AICoE-CI](https://github.com/aicoe/aicoe-ci#getting-started) can aid various aspects of a development workflow such as running pre-commit checks, build checks, triggering pipelines to build images, etc.
 
