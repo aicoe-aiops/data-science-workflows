@@ -1,17 +1,34 @@
 format: jb-book
 root: README
 parts:
-  - caption: Getting started
+  - caption: Setup Environment
     chapters:
-    - file: docs/getting-started
-    - file: docs/how-to-contribute
-  - caption: AIOps projects
+    - file: docs/setup_environment/odh_and_opf
+    - file: docs/setup_environment/JH_access
+    - file: docs/setup_environment/remote-storage
+    - file: docs/setup_environment/thoth 
+
+  - caption: Develop + Collaborate
     chapters:
-    - file: docs/aiops-projects
-    - file: docs/project-document-template
-    - file: docs/project-structure
-  - caption: Best Practices and Guidelines
-    chapters:
-    - file: docs/guidelines-for-reviewing-datascience-code.md
-    - file: docs/data-visualization-best-practices.md
-    - file: docs/create_and_deploy_jh_image.md
+    - file: docs/develop_collaborate/automated-pipelines   
+    - file: docs/develop_collaborate/thoth-tools
+    - file: docs/develop_collaborate/create_and_deploy_jh_image
+    - file: docs/develop_collaborate/meteorize
+
+  - caption: Visualization
+    chapters: 
+    - file: docs/visualization/data-visualization-best-practices
+  
+  - caption: Serving + Monitoring
+    chapters: 
+    - file: docs/serving_monitoring/deploy-models-using-seldon
+    - file: docs/serving_monitoring/monitoring-jh
+ 
+  - caption: Project Structure
+    chapters: 
+    - file: docs/project_structure/getting_started
+    - file: docs/project_structure/project-structure
+    - file: docs/project_structure/project-document-template
+    - file: docs/project_structure/how-to-contribute
+    - file: docs/project_structure/boards-and-issues
+    - file: docs/project_structure/guidelines-for-reviewing-datascience-code
