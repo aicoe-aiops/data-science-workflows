@@ -1,4 +1,4 @@
-### **How To Create Project Boards and  Use Issues**
+### How To Create Project Boards and  Use Issues
 
 You can create Issues to highlight new features, bugs and break upcoming goals of a project into smaller chunks. You can create GitHub [Issues](https://docs.github.com/en/issues/tracking-your-work-with-issues) and include [Task Lists](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-task-lists) for each task that you plan to work on.
 
