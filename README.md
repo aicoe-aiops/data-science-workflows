@@ -4,30 +4,30 @@ This repo contains a set of resources, tutorials and general best practices that
 
 ## Setup Your Environment
 
-* [What is the Open Data Hub and Operate First?](/docs/setup_environment/odh_and_opf.md) 
-* [Access JupyterHub](/docs/setup_environment/JH_access.md)
-* [Manage data with remote storage](/docs/setup_environment/remote-storage.md)
-* [Setup CI](/docs/setup_environment/thoth.md)
+* [What is the Open Data Hub and Operate First?](docs/setup_environment/odh_and_opf.md) 
+* [Access JupyterHub](docs/setup_environment/JH_access.md)
+* [Manage data with remote storage](docs/setup_environment/remote-storage.md)
+* [Setup CI](docs/setup_environment/thoth.md)
 
 ## Develop + Collaborate 
-* [Use Thoth tooling to enhance development](/docs/develop_collaborate/thoth-tools.md)
-* [Best practice for contributing as a Data Scientist](/docs/develop_collaborate/how-to-contribute.md)
-* [Build ML pipelines from notebooks](/docs/develop_collaborate/automated-pipelines.md)
-* [Track your metrics and experiments](/docs/develop_collaborate/track-metrics-using-kubeflow.md)
-* [Share reproducible notebook images](/docs/develop_collaborate/create_and_deploy_jh_image.md)
-* [Quickly deploy interactive environments and JupyterBooks](/docs/develop_collaborate/meteorize.md)
-* [Create interactive dashboards to visualize results](/docs/visualization/trino_and_superset.md)
+* [Use Thoth tooling to enhance development](docs/develop_collaborate/thoth-tools.md)
+* [Best practice for contributing as a Data Scientist](docs/develop_collaborate/how-to-contribute.md)
+* [Build ML pipelines from notebooks](docs/develop_collaborate/automated-pipelines.md)
+* [Track your metrics and experiments](docs/develop_collaborate/track-metrics-using-kubeflow.md)
+* [Share reproducible notebook images](docs/develop_collaborate/create_and_deploy_jh_image.md)
+* [Quickly deploy interactive environments and JupyterBooks](docs/develop_collaborate/meteorize.md)
+* [Create interactive dashboards to visualize results](docs/visualization/trino_and_superset.md)
 
 ## Serving + Monitoring
-* [Monitor JupyterHub environment workloads](/docs/serving_monitoring/monitor-jh)
-* [Serve your model with Seldon](/docs/serving_monitoring/deploy-models-using-seldon.md)
-* [Create custom serving images with Seldon](/docs/serving_monitoring/deploy-custom-model.md)
+* [Monitor JupyterHub environment workloads](docs/serving_monitoring/monitor-jh)
+* [Serve your model with Seldon](docs/serving_monitoring/deploy-models-using-seldon.md)
+* [Create custom serving images with Seldon](docs/serving_monitoring/deploy-custom-model.md)
 
 ## Project Organization + Structure
-* [Tips for starting a new ML project from scratch](/docs/project_structure/getting-started.md)
-* [Recommendations for structuring an E2E ML project](/docs/project_structure/project-structure.md)
-* [Template for writing a project document](/docs/project_structure/project-document-template.md)
-* [Simplify Project Management with GitHub project boards and issue](/docs/project_structure/boards-and-issues.md)
+* [Tips for starting a new ML project from scratch](docs/project_structure/getting-started.md)
+* [Recommendations for structuring an E2E ML project](docs/project_structure/project-structure.md)
+* [Template for writing a project document](docs/project_structure/project-document-template.md)
+* [Simplify Project Management with GitHub project boards and issue](docs/project_structure/boards-and-issues.md)
 
 ## E2E Example Projects
 * [AI4CI](https://github.com/aicoe-aiops/ocp-ci-analysis)
