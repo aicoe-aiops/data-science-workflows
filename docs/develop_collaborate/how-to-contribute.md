@@ -2,7 +2,7 @@
 
 Please refer to this guide for information on how to contribute to our data science projects.
 
-We encourage contribution to each of our [Data Science Projects](https://www.operate-first.cloud/data-science). In order to start contributing to our projects you can check out the "How to Contribute" section for each project under https://www.operate-first.cloud/data-science/.
+We encourage contribution to each of our [Data Science Projects](https://www.operate-first.cloud/data-science/projectsoverview.md). In order to start contributing to our projects you can check out the "How to Contribute" section for each project under https://www.operate-first.cloud/data-science/.
 
 ### **GitHub Workflow**
 
