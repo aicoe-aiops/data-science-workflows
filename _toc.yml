@@ -1,7 +1,7 @@
 format: jb-book
 root: README
 parts:
-  - caption: Setup Environment
+  - caption: Setup Your Environment
     chapters:
     - file: docs/setup_environment/odh_and_opf
     - file: docs/setup_environment/JH_access
@@ -10,25 +10,25 @@ parts:
 
   - caption: Develop + Collaborate
     chapters:
-    - file: docs/develop_collaborate/automated-pipelines   
     - file: docs/develop_collaborate/thoth-tools
+    - file: docs/develop_collaborate/how-to-contribute
+    - file: docs/develop_collaborate/automated-pipelines   
+    - file: docs/develop_collaborate/track-metrics-using-kubeflow
     - file: docs/develop_collaborate/create_and_deploy_jh_image
     - file: docs/develop_collaborate/meteorize
-    - file: docs/develop_collaborate/how-to-contribute
-
-  - caption: Visualization
-    chapters: 
-    - file: docs/visualization/data-visualization-best-practices
+    - file: docs/visualization/trino_and_superset
   
   - caption: Serving + Monitoring
     chapters: 
-    - file: docs/serving_monitoring/deploy-models-using-seldon
     - file: docs/serving_monitoring/monitoring-jh
+    - file: docs/serving_monitoring/deploy-models-using-seldon
+    - file: docs/serving_monitoring/deploy-custom-model
+   
  
-  - caption: Project Structure
+  - caption: Project Organization + Structure
     chapters: 
     - file: docs/project_structure/getting_started
     - file: docs/project_structure/project-structure
     - file: docs/project_structure/project-document-template
     - file: docs/project_structure/boards-and-issues
-    - file: docs/project_structure/guidelines-for-reviewing-datascience-code
+    
