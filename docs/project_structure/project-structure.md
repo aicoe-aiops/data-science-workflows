@@ -19,9 +19,10 @@ Our approach to overcoming this issue is simply to focus on the fewest number of
 * Slack
 	* Project channel(s) ([example](https://join.slack.com/t/operatefirst/shared_invite/zt-o2gn4wn8-O39g7sthTAuPCvaCNRnLww))
 </br></br>
-# What are the phases of a data science project?:
 
-### **1. Project Definition and Use Case Understanding**:
+# What are the phases of a data science project?
+
+### 1. Project Definition and Use Case Understanding:
 
 To start, contributors should create a public repo and include a README with an initial outline of the project, a description of any available data or similar projects and the desired outcomes and end-users of this intelligent application. If you need help coming up with a project outline, feel free to start with [this template](/project-document-template.md) for inspiration. 
 
@@ -37,7 +38,7 @@ The project outline can include:
  
 Once this is done, you can move on to step 2, OR share your new project proposal with the Operate Fist DS Community on [Slack](https://join.slack.com/t/operatefirst/shared_invite/zt-o2gn4wn8-O39g7sthTAuPCvaCNRnLww) (#data-science) to get some feedback and potential contributors.   
 
-### **2.** **Research and Problem Understanding**:
+### 2. Research and Problem Understanding:
 
 Now that you have a problem you'd like to solve, its time to do some research!!! This phase of a project is quite flexible and is bound to be traversed differently by every individual. However, before jumping into any hard-core development we generally like to make sure to do the following at the bare minimum:
 
@@ -47,7 +48,7 @@ Now that you have a problem you'd like to solve, its time to do some research!!!
 
 3. Add a `research.md` doc to your repo outlining the papers and projects explored above. This may be useful to you for reference or documentation later on. Plus, anyone who needs to do the same research in the future will thank you. 
 
-### **3.** **Data Preparation and EDA**: 
+### 3. Data Preparation and EDA: 
 
 Time to dig into the data. Before getting right into the Machine Learning development, we think its best practice to take some focused time to familiarize yourself with the data and to write all the data preparation, processing and management functions you'll need to make life easier in the future. 
 
@@ -63,7 +64,7 @@ Time to dig into the data. Before getting right into the Machine Learning develo
 5. Make any required updates to the project Readme/Plan if needed due to discoveries in the data set.  
 
 
-### **4.** **Implement proof of concept AI/ML model**:
+### 4. Implement proof of concept AI/ML model:
 
 Here is were we start to do some ML exploration and put together our bare-bones mvp application. 
 
@@ -73,7 +74,7 @@ Here is were we start to do some ML exploration and put together our bare-bones 
 
 3. Once your Proof of Concept notebook(s) are done. Push them to your github repo and share them using [project meteor](https://shower.meteor.zone/)   
 
-### **5.** **Deployed PoC as a service**
+### 5. Deployed PoC as a service:
 
 Your work is ready to leave the safety of a jupyter notebook and become a deployed service that will become the center of a new intelligent application. Get Excited! 
 
@@ -82,7 +83,7 @@ Your work is ready to leave the safety of a jupyter notebook and become a deploy
 2. Write a short notebook that can send and receive inference requests from your model services endpoint to make it easy for others to test and try out. 
 
 
-### **6.** **Evaluation**
+### 6. Evaluation:
 
 Now that your model is out in the wild, its a good idea to see if it's actually useful to anyone and evaluate its real world performance. 
 
