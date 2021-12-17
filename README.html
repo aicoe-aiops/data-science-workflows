@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Science Workflows &#8212; Data Science Workflows</title>
+    <title>Data Science Workflow &#8212; Data Science Workflows</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -31,30 +31,34 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="docs/getting-started.html" />
+    <link rel="next" title="What is Open Data Hub?" href="docs/setup_environment/odh_and_opf.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -84,68 +88,125 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1 current">
   <a class="reference internal" href="#">
-   Data Science Workflows
+   Data Science Workflow
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
-  Getting started
+  Setup Your Environment
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/getting-started.html">
-   Getting Started
+  <a class="reference internal" href="docs/setup_environment/odh_and_opf.html">
+   What is Open Data Hub?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/how-to-contribute.html">
+  <a class="reference internal" href="docs/setup_environment/JH_access.html">
+   Deploy Jupyter Lab or Notebooks easily with Operate First
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/setup_environment/remote-storage.html">
+   Remote Data Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/setup_environment/thoth.html">
+   Set Up AICoE Continuous Integration (CI)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Develop + Collaborate
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/develop_collaborate/thoth-tools.html">
+   AICoE-CI and Thoth tools for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/develop_collaborate/how-to-contribute.html">
    How to Contribute
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/develop_collaborate/automated-pipelines.html">
+   Creating Automated Model Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/develop_collaborate/track-metrics-using-kubeflow.html">
+   Experiment tracking using Kubeflow Pipelines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/develop_collaborate/create_and_deploy_jh_image.html">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/develop_collaborate/meteorize.html">
+   How to Meteorize the repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/visualization/trino_and_superset.html">
+   How to visualize data using Trino and Superset
+  </a>
+ </li>
 </ul>
-<p class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
-  AIOps projects
+  Serving + Monitoring
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/aiops-projects.html">
-   AI Ops Projects
+  <a class="reference internal" href="docs/serving_monitoring/monitor-jh.html">
+   How to Monitor JupyterHub workloads using Grafana dashboards
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/project-document-template.html">
+  <a class="reference internal" href="docs/serving_monitoring/deploy-models-using-seldon.html">
+   Deploy models on OpenShift using Seldon Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/serving_monitoring/deploy-custom-model.html">
+   Deploying Custom Model Server with Seldon
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project Organization + Structure
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/project_structure/getting-started.html">
+   Getting Started With an OPF Data Science Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/project_structure/project-structure.html">
+   How to Structure a Data Science Project: The Operate First Way!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/project_structure/project-document-template.html">
    Project Outline Template
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/project-structure.html">
-   Data Science Projects Structure for AI Ops
-  </a>
- </li>
-</ul>
-<p class="caption" role="heading">
- <span class="caption-text">
-  Best Practices and Guidelines
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/guidelines-for-reviewing-datascience-code.html">
-   10 Principles for Reviewing Data Science Code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/data-visualization-best-practices.html">
-   Best Practices for Data Science Visualizations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/create_and_deploy_jh_image.html">
-   How to create a JupyterHub image and deploy it on ODH
+  <a class="reference internal" href="docs/project_structure/boards-and-issues.html">
+   How To Create Project Boards and  Use Issues
   </a>
  </li>
 </ul>
@@ -236,6 +297,31 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-your-environment">
+   Setup Your Environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#develop-collaborate">
+   Develop + Collaborate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#serving-monitoring">
+   Serving + Monitoring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-organization-structure">
+   Project Organization + Structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#e2e-example-projects">
+   E2E Example Projects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#contact">
    Contact
   </a>
@@ -251,17 +337,60 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="data-science-workflows">
-<h1>Data Science Workflows<a class="headerlink" href="#data-science-workflows" title="Permalink to this headline">¶</a></h1>
-<p>The purpose of the data science workflows is both to provide Data Scientists in the AICoE with a template for structuring their projects and to offer data science users an opportunity to learn more about data science on ODH. We want to encourage a consistent workflow across projects that promotes the Operate First approach by testing and taking advantage of the capabilities developed by the AICoE. Additionally, as data scientists focused on developing intelligent applications for the cloud, we must ensure we are working from a cloud-native data science mindset from the start.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="data-science-workflow">
+<h1>Data Science Workflow<a class="headerlink" href="#data-science-workflow" title="Permalink to this headline">¶</a></h1>
+<p>This repo contains a set of resources, tutorials and general best practices that our team has developed and continues to refine for effectively collaborating as a group of data scientists. Our team relies heavily on the <a class="reference external" href="https://opendatahub.io/">Open Data Hub</a> (ODH) project (which we also recommend), so many of our examples will use that toolbox. But our hope is that there is enough generally applicable content that this information can be helpful to those outside the ODH ecosystem. Further, we invite others to <a class="reference external" href="https://github.com/aicoe-aiops/data-science-workflows/issues/new">contribute</a> their best practices and implementation alternatives : )</p>
+<div class="section" id="setup-your-environment">
+<h2>Setup Your Environment<a class="headerlink" href="#setup-your-environment" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><strong><a class="reference internal" href="docs/getting-started.html"><span class="doc std std-doc">Get Started</span></a></strong></p></li>
-<li><p><strong><a class="reference internal" href="docs/how-to-contribute.html"><span class="doc std std-doc">How to Contribute</span></a></strong></p></li>
-<li><p><strong><a class="reference external" href="https://www.operate-first.cloud/data-science">Data Science Projects</a></strong></p></li>
+<li><p><a class="reference internal" href="docs/setup_environment/odh_and_opf.html"><span class="doc std std-doc">What is the Open Data Hub and Operate First?</span></a></p></li>
+<li><p><a class="reference internal" href="docs/setup_environment/JH_access.html"><span class="doc std std-doc">Access JupyterHub</span></a></p></li>
+<li><p><a class="reference internal" href="docs/setup_environment/remote-storage.html"><span class="doc std std-doc">Manage data with remote storage</span></a></p></li>
+<li><p><a class="reference internal" href="docs/setup_environment/thoth.html"><span class="doc std std-doc">Setup CI</span></a></p></li>
 </ul>
+</div>
+<div class="section" id="develop-collaborate">
+<h2>Develop + Collaborate<a class="headerlink" href="#develop-collaborate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="docs/develop_collaborate/thoth-tools.html"><span class="doc std std-doc">Use Thoth tooling to enhance development</span></a></p></li>
+<li><p><a class="reference internal" href="docs/develop_collaborate/how-to-contribute.html"><span class="doc std std-doc">Best practice for contributing as a Data Scientist</span></a></p></li>
+<li><p><a class="reference internal" href="docs/develop_collaborate/automated-pipelines.html"><span class="doc std std-doc">Build ML pipelines from notebooks</span></a></p></li>
+<li><p><a class="reference internal" href="docs/develop_collaborate/track-metrics-using-kubeflow.html"><span class="doc std std-doc">Track your metrics and experiments</span></a></p></li>
+<li><p><a class="reference internal" href="docs/develop_collaborate/create_and_deploy_jh_image.html"><span class="doc std std-doc">Share reproducible notebook images</span></a></p></li>
+<li><p><a class="reference internal" href="docs/develop_collaborate/meteorize.html"><span class="doc std std-doc">Quickly deploy interactive environments and JupyterBooks</span></a></p></li>
+<li><p><a class="reference internal" href="docs/visualization/trino_and_superset.html"><span class="doc std std-doc">Create interactive dashboards to visualize results</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="serving-monitoring">
+<h2>Serving + Monitoring<a class="headerlink" href="#serving-monitoring" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="docs/serving_monitoring/monitor-jh.html"><span class="doc std std-doc">Monitor JupyterHub environment workloads</span></a></p></li>
+<li><p><a class="reference internal" href="docs/serving_monitoring/deploy-models-using-seldon.html"><span class="doc std std-doc">Serve your model with Seldon</span></a></p></li>
+<li><p><a class="reference internal" href="docs/serving_monitoring/deploy-custom-model.html"><span class="doc std std-doc">Create custom serving images with Seldon</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="project-organization-structure">
+<h2>Project Organization + Structure<a class="headerlink" href="#project-organization-structure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="docs/project_structure/getting-started.html"><span class="doc std std-doc">Tips for starting a new ML project from scratch</span></a></p></li>
+<li><p><a class="reference internal" href="docs/project_structure/project-structure.html"><span class="doc std std-doc">Recommendations for structuring an E2E ML project</span></a></p></li>
+<li><p><a class="reference internal" href="docs/project_structure/project-document-template.html"><span class="doc std std-doc">Template for writing a project document</span></a></p></li>
+<li><p><a class="reference internal" href="docs/project_structure/boards-and-issues.html"><span class="doc std std-doc">Simplify Project Management with GitHub project boards and issue</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="e2e-example-projects">
+<h2>E2E Example Projects<a class="headerlink" href="#e2e-example-projects" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/aicoe-aiops/ocp-ci-analysis">AI4CI</a></p></li>
+<li><p><a class="reference external" href="https://github.com/os-climate/aicoe-osc-demo">OS-Climate</a></p></li>
+</ul>
+</div>
 <div class="section" id="contact">
 <h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
-<p>This project is maintained as part of the <a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> and AIOps teams in Red Hat’s AI CoE as part of the Office of the CTO. More information can be found at <a class="reference external" href="https://www.operate-first.cloud/">https://www.operate-first.cloud/</a>.</p>
+<p>This project is maintained as part of the <a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> and Emerging Technologies group in Red Hat’s Office of the CTO. More information can be found at <a class="reference external" href="https://www.operate-first.cloud/">https://www.operate-first.cloud/</a>.</p>
+<p>Have a question? Open an issue in <a class="reference external" href="https://github.com/aicoe-aiops/data-science-workflows/issues/new">this repo</a> or join us on <a class="reference external" href="https://join.slack.com/t/operatefirst/shared_invite/zt-o2gn4wn8-O39g7sthTAuPCvaCNRnLww">Slack</a> in the #data-science channel. :)</p>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -294,22 +423,15 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-     <div id="next">
-        <a class="right-next" href="docs/getting-started.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Getting Started</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="docs/setup_environment/odh_and_opf.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">What is Open Data Hub?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -330,8 +452,7 @@
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
