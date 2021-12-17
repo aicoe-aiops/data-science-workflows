@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Practices for Data Science Visualizations &#8212; Data Science Workflows</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science Workflows</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../README.html">
+   Data Science Workflow
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Setup Your Environment
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup_environment/odh_and_opf.html">
+   What is Open Data Hub?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup_environment/JH_access.html">
+   Deploy Jupyter Lab or Notebooks easily with Operate First
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup_environment/remote-storage.html">
+   Remote Data Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup_environment/thoth.html">
+   Set Up AICoE Continuous Integration (CI)
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Develop + Collaborate
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../develop_collaborate/thoth-tools.html">
+   AICoE-CI and Thoth tools for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../develop_collaborate/how-to-contribute.html">
+   How to Contribute
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../develop_collaborate/automated-pipelines.html">
+   Creating Automated Model Workflows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../develop_collaborate/track-metrics-using-kubeflow.html">
+   Experiment tracking using Kubeflow Pipelines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../develop_collaborate/create_and_deploy_jh_image.html">
+   How to create a JupyterHub image and deploy it on ODH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../develop_collaborate/meteorize.html">
+   How to Meteorize the repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trino_and_superset.html">
+   How to visualize data using Trino and Superset
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Serving + Monitoring
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../serving_monitoring/monitor-jh.html">
+   How to Monitor JupyterHub workloads using Grafana dashboards
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../serving_monitoring/deploy-models-using-seldon.html">
+   Deploy models on OpenShift using Seldon Server
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../serving_monitoring/deploy-custom-model.html">
+   Deploying Custom Model Server with Seldon
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Project Organization + Structure
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../project_structure/getting-started.html">
+   Getting Started With an OPF Data Science Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../project_structure/project-structure.html">
+   How to Structure a Data Science Project: The Operate First Way!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../project_structure/project-document-template.html">
+   Project Outline Template
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../project_structure/boards-and-issues.html">
+   How To Create Project Boards and  Use Issues
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/visualization/data-visualization-best-practices.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/aicoe-aiops/data-science-workflows/issues/new?title=Issue%20on%20page%20%2Fdocs/visualization/data-visualization-best-practices.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose">
+   <strong>
+    Purpose
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#know-your-audience">
+   <strong>
+    Know your Audience
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choosing-the-correct-type-of-visualization">
+   <strong>
+    Choosing the Correct Type of Visualization
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualization-content">
+   <strong>
+    Visualization Content
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formatting-and-clean-up">
+   <strong>
+    Formatting
+   </strong>
+   <strong>
+    and Clean Up
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   <strong>
+    Examples
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#libraries">
+   <strong>
+    Libraries
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   <strong>
+    References :
+   </strong>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="best-practices-for-data-science-visualizations">
+<h1>Best Practices for Data Science Visualizations<a class="headerlink" href="#best-practices-for-data-science-visualizations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="purpose">
+<h2><strong>Purpose</strong><a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p><em>Visualizations are meant to supplement and provide clarity and insight into the claims being made about the data. People are generally not analytical and are naturally better at interpreting information visually. Thus, as a data scientist, it is important to present this information in a way that accurately provides a clear visual representation of the data, and what the story behind the data is.</em></p>
+</div>
+<div class="section" id="know-your-audience">
+<h2><strong>Know your Audience</strong><a class="headerlink" href="#know-your-audience" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Consider how much background information the viewer will have when deciding how much information to provide regarding the visualization</p></li>
+<li><p>The goal is to provide enough information while still remaining clear and concise</p></li>
+<li><p>If in doubt, have someone of a similar audience level look over the visualizations –
+can they explain the visualization to you in the way you would like it to be interpreted?</p></li>
+</ol>
+</div>
+<div class="section" id="choosing-the-correct-type-of-visualization">
+<h2><strong>Choosing the Correct Type of Visualization</strong><a class="headerlink" href="#choosing-the-correct-type-of-visualization" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Consider the data you are presenting - categorical, numerical, continuous, discrete, etc.</p></li>
+<li><p>Consider how it should be presented - plotted over time, histogram, heatmap, etc.</p></li>
+<li><p>If in doubt, research methods that can be used to present your data type</p></li>
+</ol>
+</div>
+<div class="section" id="visualization-content">
+<h2><strong>Visualization Content</strong><a class="headerlink" href="#visualization-content" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Add descriptions! Clearly state…</p>
+<ul class="simple">
+<li><p>What is being measured and plotted</p></li>
+<li><p>Why is it being measured and plotted - emphasize important points</p></li>
+<li><p>Why is it important to visualize it specifically in the way it is being presented</p></li>
+<li><p>What insights can be made based on the plots - include these points as a summary to explain any plots</p></li>
+</ul>
+</li>
+<li><p>More visualizations ≠ More clear</p>
+<ul class="simple">
+<li><p>Each visualization should have a clear purpose and explanation so that it’s easier for the end user to understand</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="formatting-and-clean-up">
+<h2><strong>Formatting</strong> <strong>and Clean Up</strong><a class="headerlink" href="#formatting-and-clean-up" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Add labels</p>
+<ul class="simple">
+<li><p>Title</p></li>
+<li><p>Axis (include units if possible)</p></li>
+<li><p>Capitalization in labels provides a cleaner look</p></li>
+<li><p>Be consistent with labels</p></li>
+</ul>
+</li>
+<li><p>Plots should be the same size</p></li>
+<li><p>Adjust plot, text, or axis size if necessary</p>
+<ul class="simple">
+<li><p>i.e. if certain text is overlapping or not visible</p></li>
+</ul>
+</li>
+<li><p>Consider adding a legend if multiple things are being shown</p></li>
+<li><p>Ensure plots are scaled properly</p>
+<ul class="simple">
+<li><p>If  multiple visualizations are being used for comparisons, scaling should be consistent across all visualizations</p></li>
+</ul>
+</li>
+<li><p>Rename things if necessary</p>
+<ul class="simple">
+<li><p>Try to remove “-” and “_” from text within visualization labels</p></li>
+<li><p>Try to remove abbreviations unless absolutely necessary</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="examples">
+<h2><strong>Examples</strong><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Please view the <em>best-data-visualization-practices.ipynb</em> Jupyter Notebook for examples of five basic data visualizations and their respective descriptions.</p>
+</div>
+<div class="section" id="libraries">
+<h2><strong>Libraries</strong><a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://seaborn.pydata.org/">Seaborn </a></p></li>
+<li><p><a class="reference external" href="https://plotly.com/">Plotly</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a></p></li>
+</ol>
+</div>
+<div class="section" id="references">
+<h2><strong>References :</strong><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>There are various guidelines for best Visualization practices, here are a few examples, but our principles take these best practices into consideration and targets Data Scientists working on visualizations using Jupyter Notebooks</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://towardsdatascience.com/8-best-visualizations-to-consider-for-your-data-science-projects-b9ace21564a">https://towardsdatascience.com/8-best-visualizations-to-consider-for-your-data-science-projects-b9ace21564a</a></p></li>
+<li><p><a class="reference external" href="https://www.analytics8.com/blog/6-tips-to-create-powerful-data-visualizations/">https://www.analytics8.com/blog/6-tips-to-create-powerful-data-visualizations/</a></p></li>
+<li><p><a class="reference external" href="https://www.columnfivemedia.com/25-tips-to-upgrade-your-data-visualization-design/">https://www.columnfivemedia.com/25-tips-to-upgrade-your-data-visualization-design/</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/tips-for-effective-data-visualization-d4b2af91db37">https://towardsdatascience.com/tips-for-effective-data-visualization-d4b2af91db37</a></p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/visualization"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By AIOps<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
