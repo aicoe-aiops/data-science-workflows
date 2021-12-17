@@ -1,4 +1,4 @@
-* **How to Monitor JupyterHub workloads using Grafana dashboards** 
+# How to Monitor JupyterHub workloads using Grafana dashboards
 
 [![JH how to](https://img.youtube.com/vi/1zZ-7mdxOWU/0.jpg)](https://youtu.be/1zZ-7mdxOWU)
 
