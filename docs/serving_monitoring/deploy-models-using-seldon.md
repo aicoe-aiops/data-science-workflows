@@ -19,7 +19,7 @@ Have a model trained and ready to share with the world? In this guide, we go ove
 
     * In the namespace, add create a secret with the AWS credentials for access to the bucket. To create a Secret, go to `Workloads`, `Secrets`, click on `Create` and select `From YAML` in the dropdown menu. 
   
-    ![create secret](../public/assets/deploy-models-using-seldon/create-secret.png)
+    ![create secret](/public/assets/deploy-models-using-seldon/create-secret.png)
 
     Here is an example of the format of the secret:
     ```
@@ -41,7 +41,7 @@ Have a model trained and ready to share with the world? In this guide, we go ove
 
         * Find more information on the formats of the deployment configs for other [model servers here](https://docs.seldon.io/projects/seldon-core/en/latest/nav/config/servers.html).
     
-    ![create deployment](../public/assets/deploy-models-using-seldon/create-deployment.png)
+    ![create deployment](/public/assets/deploy-models-using-seldon/create-deployment.png)
 
     * If you are using the SKLearn Seldon server, the `modeluri` refers to the model’s prefix in the Ceph bucket. In your Seldon Deployment, change model URI to be for your model. Sample model URI from S3: `s3://<bucket_name>/<project_name>/<model_name>/model.joblib`
     
@@ -49,7 +49,7 @@ Have a model trained and ready to share with the world? In this guide, we go ove
   
     * To test the deployed model endpoint, create a route to the deployed model by selecting the deployed service. To create a route, from the OpenShift console, go to `Networking`, then go to `Routes` and click on “Create Route”. Give the route a desired name, and select the service that we deployed earlier, select a “Target Port” and click on Create.
 
-    ![create route](../public/assets/deploy-models-using-seldon/create-route.png)
+    ![create route](/public/assets/deploy-models-using-seldon/create-route.png)
 
     Once the route has been created, you can send a curl request to interact with the route like:
 
