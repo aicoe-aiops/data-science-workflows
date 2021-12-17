@@ -66,7 +66,7 @@ metrics = {
 ```
 4. Once the notebook is  configured to track metrics and the pipeline has been submitted, you can move over to the kubeflow UI to view the metrics that are being captured during notebook run.
 
-![metrics](../public/assets/track-metrics-using-kubeflow/metrics.png)
+![metrics](/public/assets/track-metrics-using-kubeflow/metrics.png)
 
 By clicking on a particular run, and moving over to the `Run output` tab, you can view the metrics captured for each notebook during the particular run.
 
@@ -74,6 +74,6 @@ By clicking on a particular run, and moving over to the `Run output` tab, you ca
 
 This can be especially helpful while tracking multiple model training runs, and can be used to capture model performance metrics.
 
-![metrics](../public/assets/track-metrics-using-kubeflow/compare-runs.png)
+![metrics](/public/assets/track-metrics-using-kubeflow/compare-runs.png)
 
 If you want to see an real example of how to integrate experiement tracking, take a look at this [notebook](https://github.com/os-climate/aicoe-osc-demo/blob/master/notebooks/demo1/demo1-create-tables.ipynb).
