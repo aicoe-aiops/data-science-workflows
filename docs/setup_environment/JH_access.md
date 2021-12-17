@@ -2,6 +2,8 @@
 
 In this guide, we will go over how you can spin up a classic Jupyter Notebook or a Jupyterlab instance to get started with your very own cloud based data science development environment.
 
+[![Trino + Superset](https://img.youtube.com/vi/iI_-lqi3vP4/0.jpg)](https://youtu.be/iI_-lqi3vP4)
+
 
 * To get started, first go to the [operate-first](https://www.operate-first.cloud/) website and navigate to `Community Handbook` > `GitOps Docs` > `Documentation`. Here you can find info about all the clusters and services managed by the OPF team. 
 

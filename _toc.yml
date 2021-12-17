@@ -14,6 +14,7 @@ parts:
     - file: docs/develop_collaborate/thoth-tools
     - file: docs/develop_collaborate/create_and_deploy_jh_image
     - file: docs/develop_collaborate/meteorize
+    - file: docs/develop_collaborate/how-to-contribute
 
   - caption: Visualization
     chapters: 
@@ -29,6 +30,5 @@ parts:
     - file: docs/project_structure/getting_started
     - file: docs/project_structure/project-structure
     - file: docs/project_structure/project-document-template
-    - file: docs/project_structure/how-to-contribute
     - file: docs/project_structure/boards-and-issues
     - file: docs/project_structure/guidelines-for-reviewing-datascience-code
