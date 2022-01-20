@@ -19,7 +19,7 @@ This repo contains a set of resources, tutorials and general best practices that
 * [Create interactive dashboards to visualize results](docs/visualization/trino_and_superset.md)
 
 ## Serving + Monitoring
-* [Monitor JupyterHub environment workloads](docs/serving_monitoring/monitor-jh)
+* [Monitor JupyterHub environment workloads](docs/serving_monitoring/monitor-jh.md)
 * [Serve your model with Seldon](docs/serving_monitoring/deploy-models-using-seldon.md)
 * [Create custom serving images with Seldon](docs/serving_monitoring/deploy-custom-model.md)
 
