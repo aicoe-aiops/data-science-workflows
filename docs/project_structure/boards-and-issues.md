@@ -19,6 +19,4 @@ Once your project board is created, begin to create issues and populate the boar
 * When you're almost ready to begin working on an issue, move it to the *To Do* column
 * Once you start work on an issue, move it to the *In Progress* column
 
-For more information of the remainder of our GitHub workflow, please visit [this page][10]. 
-
-[10]: how-to-contribute.md
+For more information of the remainder of our GitHub workflow, please visit [this page](../develop_collaborate/how-to-contribute.md).

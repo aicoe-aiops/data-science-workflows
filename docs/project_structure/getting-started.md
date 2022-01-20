@@ -6,15 +6,15 @@ The outline below provides some helpful links to kick start the creation of a ne
 
 ## Organize and Structure a Project
 
-* Review our project structure [doc](/project-structure.md) and get a sense for the phases of a data science project.
+* Review our project structure [doc](project-structure.md) and get a sense for the phases of a data science project.
 *  Create a public git repository using our project template. Feel free to use the template directly or initialize your project via the cookiecutter tool.
     * [template repo](https://github.com/aicoe-aiops/project-template)
     * [cookiecutter](https://github.com/aicoe-aiops/cookiecutter-data-science) 
-* Start a github project board to track tasks and share ideas. Find more info and examples [here](/boards-and-issues.md)   
+* Start a github project board to track tasks and share ideas. Find more info and examples [here](boards-and-issues.md)   
 
 
 ## Set Up Bots and CI Tools
-* Set up the [aicoe-ci](/thoth-tools.md) tools for your repo. These tools can aid in various aspects of your development workflow by running pre-commit checks, build checks, triggering pipelines to build images and more automatically. Find more info on setting up these tools [here](https://github.com/aicoe/aicoe-ci#getting-started).
+* Set up the [aicoe-ci](../develop_collaborate/thoth-tools.md) tools for your repo. These tools can aid in various aspects of your development workflow by running pre-commit checks, build checks, triggering pipelines to build images and more automatically. Find more info on setting up these tools [here](https://github.com/aicoe/aicoe-ci#getting-started).
 
 ## Use Open Data Hub and JupyterHub instances
 

@@ -24,7 +24,7 @@ Our approach to overcoming this issue is simply to focus on the fewest number of
 
 ### 1. Project Definition and Use Case Understanding:
 
-To start, contributors should create a public repo and include a README with an initial outline of the project, a description of any available data or similar projects and the desired outcomes and end-users of this intelligent application. If you need help coming up with a project outline, feel free to start with [this template](/project-document-template.md) for inspiration. 
+To start, contributors should create a public repo and include a README with an initial outline of the project, a description of any available data or similar projects and the desired outcomes and end-users of this intelligent application. If you need help coming up with a project outline, feel free to start with [this template](project-document-template.md) for inspiration. 
 
 The project outline can include: 
 
