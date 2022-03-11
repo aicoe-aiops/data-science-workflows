@@ -17,6 +17,7 @@ This repo contains a set of resources, tutorials and general best practices that
 * [Share reproducible notebook images](docs/develop_collaborate/create_and_deploy_jh_image.md)
 * [Quickly deploy interactive environments and JupyterBooks](docs/develop_collaborate/meteorize.md)
 * [Create interactive dashboards to visualize results](docs/visualization/trino_and_superset.md)
+* [Getting Started with Data Science](docs/develop_collaborate/getting-started-with-data-science.md)
 
 ## Serving + Monitoring
 * [Monitor JupyterHub environment workloads](docs/serving_monitoring/monitor-jh.md)
