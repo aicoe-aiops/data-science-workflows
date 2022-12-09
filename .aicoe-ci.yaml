@@ -7,7 +7,7 @@ check:
 build:
   build-stratergy: Source
   build-source-script: "image:///opt/app-root/builder"
-  base-image: quay.io/thoth-station/s2i-custom-notebook:v0.4.5
+  base-image: quay.io/thoth-station/s2i-custom-notebook:v0.4.7
   registry: quay.io
   registry-org: aicoe
   registry-project: data-science-workflows
